@@ -8,4 +8,7 @@
     <root level="debug">
         <appender-ref ref="STDOUT"/>
     </root>
+
+    <!--开启sql日志-->
+    <logger name="com.jiangpw.mapper.NoteMapper" level="DEBUG"/>
 </configuration>

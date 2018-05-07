@@ -11,6 +11,7 @@
     <title>SSM框架整合</title>
 </head>
 <body>
-${user.id}: ${user.userName}
+恭喜登录成功！
+${user.id}: ${user.username}
 </body>
 </html>
