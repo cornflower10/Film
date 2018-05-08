@@ -1,0 +1,4 @@
+/.idea
+/src/main/jdbc.properties
+*/target/*
+/target/*
