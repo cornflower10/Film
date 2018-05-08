@@ -2,7 +2,6 @@ package com.jiangpw.mapper;
 
 import com.jiangpw.entity.User;
 import com.jiangpw.entity.UserExample;
-
 import java.util.List;
 
 public interface UserMapper {
@@ -19,6 +18,4 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
-
-    User selectByPhone(Long phone);
 }

@@ -1,9 +1,9 @@
 package com.jiangpw.service;
 
-import com.jiangpw.entity.Like;
+import com.jiangpw.entity.Favor;
 import com.jiangpw.entity.Note;
 import com.jiangpw.entity.NoteExample;
-import com.jiangpw.mapper.LikeMapper;
+import com.jiangpw.mapper.FavorMapper;
 import com.jiangpw.mapper.NoteMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ public class NoteServiceImpl implements NoteService {
     private NoteMapper noteMapper;
 
     @Autowired
-    private LikeMapper likeMapper;
+    private FavorMapper favorMapper;
 
     public List<Note> getList() {
         NoteExample noteExample = new NoteExample();
@@ -29,8 +29,8 @@ public class NoteServiceImpl implements NoteService {
         noteMapper.insertSelective(note);
     }
 
-    public void like(Like like) {
-        likeMapper.insertSelective(like);
+    public void favor(Favor favor) {
+        favorMapper.insertSelective(favor)
     }
 
     public void detail(int id) {

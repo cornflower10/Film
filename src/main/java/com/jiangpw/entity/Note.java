@@ -9,11 +9,11 @@ public class Note {
 
     private Integer imgid;
 
-    private Integer likeid;
+    private Integer favoeid;
 
     private Integer labelid;
 
-    private Integer checkid;
+    private Integer reviewid;
 
     private Integer categoryid;
 
@@ -47,12 +47,12 @@ public class Note {
         this.imgid = imgid;
     }
 
-    public Integer getLikeid() {
-        return likeid;
+    public Integer getFavoeid() {
+        return favoeid;
     }
 
-    public void setLikeid(Integer likeid) {
-        this.likeid = likeid;
+    public void setFavoeid(Integer favoeid) {
+        this.favoeid = favoeid;
     }
 
     public Integer getLabelid() {
@@ -63,12 +63,12 @@ public class Note {
         this.labelid = labelid;
     }
 
-    public Integer getCheckid() {
-        return checkid;
+    public Integer getReviewid() {
+        return reviewid;
     }
 
-    public void setCheckid(Integer checkid) {
-        this.checkid = checkid;
+    public void setReviewid(Integer reviewid) {
+        this.reviewid = reviewid;
     }
 
     public Integer getCategoryid() {

@@ -285,63 +285,63 @@ public class NoteExample {
             return (Criteria) this;
         }
 
-        public Criteria andLikeidIsNull() {
-            addCriterion("likeid is null");
+        public Criteria andFavoeidIsNull() {
+            addCriterion("favoeid is null");
             return (Criteria) this;
         }
 
-        public Criteria andLikeidIsNotNull() {
-            addCriterion("likeid is not null");
+        public Criteria andFavoeidIsNotNull() {
+            addCriterion("favoeid is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLikeidEqualTo(Integer value) {
-            addCriterion("likeid =", value, "likeid");
+        public Criteria andFavoeidEqualTo(Integer value) {
+            addCriterion("favoeid =", value, "favoeid");
             return (Criteria) this;
         }
 
-        public Criteria andLikeidNotEqualTo(Integer value) {
-            addCriterion("likeid <>", value, "likeid");
+        public Criteria andFavoeidNotEqualTo(Integer value) {
+            addCriterion("favoeid <>", value, "favoeid");
             return (Criteria) this;
         }
 
-        public Criteria andLikeidGreaterThan(Integer value) {
-            addCriterion("likeid >", value, "likeid");
+        public Criteria andFavoeidGreaterThan(Integer value) {
+            addCriterion("favoeid >", value, "favoeid");
             return (Criteria) this;
         }
 
-        public Criteria andLikeidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("likeid >=", value, "likeid");
+        public Criteria andFavoeidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("favoeid >=", value, "favoeid");
             return (Criteria) this;
         }
 
-        public Criteria andLikeidLessThan(Integer value) {
-            addCriterion("likeid <", value, "likeid");
+        public Criteria andFavoeidLessThan(Integer value) {
+            addCriterion("favoeid <", value, "favoeid");
             return (Criteria) this;
         }
 
-        public Criteria andLikeidLessThanOrEqualTo(Integer value) {
-            addCriterion("likeid <=", value, "likeid");
+        public Criteria andFavoeidLessThanOrEqualTo(Integer value) {
+            addCriterion("favoeid <=", value, "favoeid");
             return (Criteria) this;
         }
 
-        public Criteria andLikeidIn(List<Integer> values) {
-            addCriterion("likeid in", values, "likeid");
+        public Criteria andFavoeidIn(List<Integer> values) {
+            addCriterion("favoeid in", values, "favoeid");
             return (Criteria) this;
         }
 
-        public Criteria andLikeidNotIn(List<Integer> values) {
-            addCriterion("likeid not in", values, "likeid");
+        public Criteria andFavoeidNotIn(List<Integer> values) {
+            addCriterion("favoeid not in", values, "favoeid");
             return (Criteria) this;
         }
 
-        public Criteria andLikeidBetween(Integer value1, Integer value2) {
-            addCriterion("likeid between", value1, value2, "likeid");
+        public Criteria andFavoeidBetween(Integer value1, Integer value2) {
+            addCriterion("favoeid between", value1, value2, "favoeid");
             return (Criteria) this;
         }
 
-        public Criteria andLikeidNotBetween(Integer value1, Integer value2) {
-            addCriterion("likeid not between", value1, value2, "likeid");
+        public Criteria andFavoeidNotBetween(Integer value1, Integer value2) {
+            addCriterion("favoeid not between", value1, value2, "favoeid");
             return (Criteria) this;
         }
 
@@ -405,63 +405,63 @@ public class NoteExample {
             return (Criteria) this;
         }
 
-        public Criteria andCheckidIsNull() {
-            addCriterion("checkid is null");
+        public Criteria andReviewidIsNull() {
+            addCriterion("reviewid is null");
             return (Criteria) this;
         }
 
-        public Criteria andCheckidIsNotNull() {
-            addCriterion("checkid is not null");
+        public Criteria andReviewidIsNotNull() {
+            addCriterion("reviewid is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCheckidEqualTo(Integer value) {
-            addCriterion("checkid =", value, "checkid");
+        public Criteria andReviewidEqualTo(Integer value) {
+            addCriterion("reviewid =", value, "reviewid");
             return (Criteria) this;
         }
 
-        public Criteria andCheckidNotEqualTo(Integer value) {
-            addCriterion("checkid <>", value, "checkid");
+        public Criteria andReviewidNotEqualTo(Integer value) {
+            addCriterion("reviewid <>", value, "reviewid");
             return (Criteria) this;
         }
 
-        public Criteria andCheckidGreaterThan(Integer value) {
-            addCriterion("checkid >", value, "checkid");
+        public Criteria andReviewidGreaterThan(Integer value) {
+            addCriterion("reviewid >", value, "reviewid");
             return (Criteria) this;
         }
 
-        public Criteria andCheckidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("checkid >=", value, "checkid");
+        public Criteria andReviewidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("reviewid >=", value, "reviewid");
             return (Criteria) this;
         }
 
-        public Criteria andCheckidLessThan(Integer value) {
-            addCriterion("checkid <", value, "checkid");
+        public Criteria andReviewidLessThan(Integer value) {
+            addCriterion("reviewid <", value, "reviewid");
             return (Criteria) this;
         }
 
-        public Criteria andCheckidLessThanOrEqualTo(Integer value) {
-            addCriterion("checkid <=", value, "checkid");
+        public Criteria andReviewidLessThanOrEqualTo(Integer value) {
+            addCriterion("reviewid <=", value, "reviewid");
             return (Criteria) this;
         }
 
-        public Criteria andCheckidIn(List<Integer> values) {
-            addCriterion("checkid in", values, "checkid");
+        public Criteria andReviewidIn(List<Integer> values) {
+            addCriterion("reviewid in", values, "reviewid");
             return (Criteria) this;
         }
 
-        public Criteria andCheckidNotIn(List<Integer> values) {
-            addCriterion("checkid not in", values, "checkid");
+        public Criteria andReviewidNotIn(List<Integer> values) {
+            addCriterion("reviewid not in", values, "reviewid");
             return (Criteria) this;
         }
 
-        public Criteria andCheckidBetween(Integer value1, Integer value2) {
-            addCriterion("checkid between", value1, value2, "checkid");
+        public Criteria andReviewidBetween(Integer value1, Integer value2) {
+            addCriterion("reviewid between", value1, value2, "reviewid");
             return (Criteria) this;
         }
 
-        public Criteria andCheckidNotBetween(Integer value1, Integer value2) {
-            addCriterion("checkid not between", value1, value2, "checkid");
+        public Criteria andReviewidNotBetween(Integer value1, Integer value2) {
+            addCriterion("reviewid not between", value1, value2, "reviewid");
             return (Criteria) this;
         }
 
