@@ -2,6 +2,7 @@ package com.jiangpw.mapper;
 
 import com.jiangpw.entity.Note;
 import com.jiangpw.entity.NoteExample;
+
 import java.util.List;
 
 public interface NoteMapper {
@@ -22,4 +23,6 @@ public interface NoteMapper {
     int updateByPrimaryKeyWithBLOBs(Note record);
 
     int updateByPrimaryKey(Note record);
+
+    List<Note> getNotes();
 }

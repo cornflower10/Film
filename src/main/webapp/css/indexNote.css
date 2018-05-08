@@ -1,0 +1,35 @@
+.panel {
+    display: inline-block;
+    width: 25%;
+}
+
+.panel:hover {
+    opacity: 0.5;
+}
+
+.head {
+    width: 30px;
+}
+
+.user {
+    display: inline-block;
+}
+
+.favor {
+    float: right;
+    display: inline-block;
+}
+
+.panel-footer {
+    padding: 10px 20px 10px 20px;
+}
+
+.content {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.favor_icon {
+    width: 30px;
+    height: 30px;
+}

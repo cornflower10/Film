@@ -2,7 +2,6 @@ package com.jiangpw.service;
 
 import com.jiangpw.entity.Favor;
 import com.jiangpw.entity.Note;
-import com.jiangpw.entity.NoteExample;
 import com.jiangpw.mapper.FavorMapper;
 import com.jiangpw.mapper.NoteMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +18,7 @@ public class NoteServiceImpl implements NoteService {
     private FavorMapper favorMapper;
 
     public List<Note> getList() {
-        NoteExample noteExample = new NoteExample();
-        NoteExample.Criteria criteria = noteExample.createCriteria();
-        noteExample.setOrderByClause("id desc");
-        return noteMapper.selectByExample(noteExample);
+        return noteMapper.getNotes();
     }
 
     public void add(Note note) {

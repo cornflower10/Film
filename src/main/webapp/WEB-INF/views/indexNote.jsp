@@ -11,16 +11,31 @@
 <html>
 <head>
     <title>笔记列表</title>
+    <script src="../js/jQuery-2.1.4.min.js"></script>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <script src="../js/bootstrap.min.js"></script>
+    <link href="../css/indexNote.css" rel="stylesheet">
 </head>
 <body>
 <c:forEach items="${notes}" var="n" varStatus="status">
-    <tr>
-        <td>${n.id}</td>
-        <td>${n.userid}</td>
-        <td>${n.content}</td>
-        <td>${n.imgid}</td>
-        <td>${n.favorid}</td>
-    </tr>
+    <div class="panel panel-info">
+        <div class="panel-body">
+            <img src="${n.imgs[0].url}" alt="..." class="img-thumbnail">
+        </div>
+        <div class="panel-footer">
+            <label class="content">${n.content}</label>
+            <div>
+                <div class="user">
+                    <span><img src="${n.user.img}" alt="..." class="head img-circle"></span>
+                    <span>${n.user.username}</span>
+                </div>
+                <div class="favor">
+                    <span> <img src="../img/favor.png" alt="..." class="favor_icon"></span>
+                    <span>${n.favor.likecount}</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </c:forEach>
 </body>
 </html>

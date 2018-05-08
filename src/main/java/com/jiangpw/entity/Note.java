@@ -1,6 +1,7 @@
 package com.jiangpw.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class Note {
     private Integer id;
@@ -22,6 +23,46 @@ public class Note {
     private Date updatetime;
 
     private String content;
+
+    private List<Img> imgs;
+
+    private Favor favor;
+
+    private Category category;
+
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Favor getFavor() {
+        return favor;
+    }
+
+    public void setFavor(Favor favor) {
+        this.favor = favor;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public List<Img> getImgs() {
+        return imgs;
+    }
+
+    public void setImgs(List<Img> imgs) {
+        this.imgs = imgs;
+    }
 
     public Integer getId() {
         return id;
