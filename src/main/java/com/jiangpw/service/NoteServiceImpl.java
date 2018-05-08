@@ -30,7 +30,7 @@ public class NoteServiceImpl implements NoteService {
     }
 
     public void favor(Favor favor) {
-        favorMapper.insertSelective(favor)
+        favorMapper.insertSelective(favor);
     }
 
     public void detail(int id) {

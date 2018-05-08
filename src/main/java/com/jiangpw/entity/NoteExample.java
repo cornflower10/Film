@@ -285,63 +285,63 @@ public class NoteExample {
             return (Criteria) this;
         }
 
-        public Criteria andFavoeidIsNull() {
-            addCriterion("favoeid is null");
+        public Criteria andFavoridIsNull() {
+            addCriterion("favorid is null");
             return (Criteria) this;
         }
 
-        public Criteria andFavoeidIsNotNull() {
-            addCriterion("favoeid is not null");
+        public Criteria andFavoridIsNotNull() {
+            addCriterion("favorid is not null");
             return (Criteria) this;
         }
 
-        public Criteria andFavoeidEqualTo(Integer value) {
-            addCriterion("favoeid =", value, "favoeid");
+        public Criteria andFavoridEqualTo(Integer value) {
+            addCriterion("favorid =", value, "favorid");
             return (Criteria) this;
         }
 
-        public Criteria andFavoeidNotEqualTo(Integer value) {
-            addCriterion("favoeid <>", value, "favoeid");
+        public Criteria andFavoridNotEqualTo(Integer value) {
+            addCriterion("favorid <>", value, "favorid");
             return (Criteria) this;
         }
 
-        public Criteria andFavoeidGreaterThan(Integer value) {
-            addCriterion("favoeid >", value, "favoeid");
+        public Criteria andFavoridGreaterThan(Integer value) {
+            addCriterion("favorid >", value, "favorid");
             return (Criteria) this;
         }
 
-        public Criteria andFavoeidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("favoeid >=", value, "favoeid");
+        public Criteria andFavoridGreaterThanOrEqualTo(Integer value) {
+            addCriterion("favorid >=", value, "favorid");
             return (Criteria) this;
         }
 
-        public Criteria andFavoeidLessThan(Integer value) {
-            addCriterion("favoeid <", value, "favoeid");
+        public Criteria andFavoridLessThan(Integer value) {
+            addCriterion("favorid <", value, "favorid");
             return (Criteria) this;
         }
 
-        public Criteria andFavoeidLessThanOrEqualTo(Integer value) {
-            addCriterion("favoeid <=", value, "favoeid");
+        public Criteria andFavoridLessThanOrEqualTo(Integer value) {
+            addCriterion("favorid <=", value, "favorid");
             return (Criteria) this;
         }
 
-        public Criteria andFavoeidIn(List<Integer> values) {
-            addCriterion("favoeid in", values, "favoeid");
+        public Criteria andFavoridIn(List<Integer> values) {
+            addCriterion("favorid in", values, "favorid");
             return (Criteria) this;
         }
 
-        public Criteria andFavoeidNotIn(List<Integer> values) {
-            addCriterion("favoeid not in", values, "favoeid");
+        public Criteria andFavoridNotIn(List<Integer> values) {
+            addCriterion("favorid not in", values, "favorid");
             return (Criteria) this;
         }
 
-        public Criteria andFavoeidBetween(Integer value1, Integer value2) {
-            addCriterion("favoeid between", value1, value2, "favoeid");
+        public Criteria andFavoridBetween(Integer value1, Integer value2) {
+            addCriterion("favorid between", value1, value2, "favorid");
             return (Criteria) this;
         }
 
-        public Criteria andFavoeidNotBetween(Integer value1, Integer value2) {
-            addCriterion("favoeid not between", value1, value2, "favoeid");
+        public Criteria andFavoridNotBetween(Integer value1, Integer value2) {
+            addCriterion("favorid not between", value1, value2, "favorid");
             return (Criteria) this;
         }
 

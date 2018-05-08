@@ -19,7 +19,7 @@
         <td>${n.userid}</td>
         <td>${n.content}</td>
         <td>${n.imgid}</td>
-        <td>${n.likeid}</td>
+        <td>${n.favorid}</td>
     </tr>
 </c:forEach>
 </body>

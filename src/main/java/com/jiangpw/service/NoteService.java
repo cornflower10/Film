@@ -10,7 +10,7 @@ public interface NoteService {
 
     void add(Note note);
 
-    void favor(Favor like);
+    void favor(Favor favor);
 
     void detail(int id);
 }

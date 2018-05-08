@@ -5,7 +5,7 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="userid" jdbcType="INTEGER" property="userid" />
     <result column="imgid" jdbcType="INTEGER" property="imgid" />
-    <result column="favoeid" jdbcType="INTEGER" property="favoeid" />
+    <result column="favorid" jdbcType="INTEGER" property="favorid" />
     <result column="labelid" jdbcType="INTEGER" property="labelid" />
     <result column="reviewid" jdbcType="INTEGER" property="reviewid" />
     <result column="categoryid" jdbcType="INTEGER" property="categoryid" />
@@ -45,7 +45,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, userid, imgid, favoeid, labelid, reviewid, categoryid, createtiem, updatetime
+    id, userid, imgid, favorid, labelid, reviewid, categoryid, createtiem, updatetime
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -95,11 +95,11 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.jiangpw.entity.Note" useGeneratedKeys="true">
-    insert into note (userid, imgid, favoeid, 
+    insert into note (userid, imgid, favorid, 
       labelid, reviewid, categoryid, 
       createtiem, updatetime, content
       )
-    values (#{userid,jdbcType=INTEGER}, #{imgid,jdbcType=INTEGER}, #{favoeid,jdbcType=INTEGER}, 
+    values (#{userid,jdbcType=INTEGER}, #{imgid,jdbcType=INTEGER}, #{favorid,jdbcType=INTEGER}, 
       #{labelid,jdbcType=INTEGER}, #{reviewid,jdbcType=INTEGER}, #{categoryid,jdbcType=INTEGER}, 
       #{createtiem,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR}
       )
@@ -113,8 +113,8 @@
       <if test="imgid != null">
         imgid,
       </if>
-      <if test="favoeid != null">
-        favoeid,
+      <if test="favorid != null">
+        favorid,
       </if>
       <if test="labelid != null">
         labelid,
@@ -142,8 +142,8 @@
       <if test="imgid != null">
         #{imgid,jdbcType=INTEGER},
       </if>
-      <if test="favoeid != null">
-        #{favoeid,jdbcType=INTEGER},
+      <if test="favorid != null">
+        #{favorid,jdbcType=INTEGER},
       </if>
       <if test="labelid != null">
         #{labelid,jdbcType=INTEGER},
@@ -174,8 +174,8 @@
       <if test="imgid != null">
         imgid = #{imgid,jdbcType=INTEGER},
       </if>
-      <if test="favoeid != null">
-        favoeid = #{favoeid,jdbcType=INTEGER},
+      <if test="favorid != null">
+        favorid = #{favorid,jdbcType=INTEGER},
       </if>
       <if test="labelid != null">
         labelid = #{labelid,jdbcType=INTEGER},
@@ -202,7 +202,7 @@
     update note
     set userid = #{userid,jdbcType=INTEGER},
       imgid = #{imgid,jdbcType=INTEGER},
-      favoeid = #{favoeid,jdbcType=INTEGER},
+      favorid = #{favorid,jdbcType=INTEGER},
       labelid = #{labelid,jdbcType=INTEGER},
       reviewid = #{reviewid,jdbcType=INTEGER},
       categoryid = #{categoryid,jdbcType=INTEGER},
@@ -215,7 +215,7 @@
     update note
     set userid = #{userid,jdbcType=INTEGER},
       imgid = #{imgid,jdbcType=INTEGER},
-      favoeid = #{favoeid,jdbcType=INTEGER},
+      favorid = #{favorid,jdbcType=INTEGER},
       labelid = #{labelid,jdbcType=INTEGER},
       reviewid = #{reviewid,jdbcType=INTEGER},
       categoryid = #{categoryid,jdbcType=INTEGER},

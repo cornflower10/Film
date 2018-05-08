@@ -9,7 +9,7 @@ public class Note {
 
     private Integer imgid;
 
-    private Integer favoeid;
+    private Integer favorid;
 
     private Integer labelid;
 
@@ -47,12 +47,12 @@ public class Note {
         this.imgid = imgid;
     }
 
-    public Integer getFavoeid() {
-        return favoeid;
+    public Integer getFavorid() {
+        return favorid;
     }
 
-    public void setFavoeid(Integer favoeid) {
-        this.favoeid = favoeid;
+    public void setFavorid(Integer favorid) {
+        this.favorid = favorid;
     }
 
     public Integer getLabelid() {
