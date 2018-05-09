@@ -5,6 +5,7 @@ import com.jiangpw.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,16 +17,30 @@ public class NoteController {
     @Autowired
     private NoteService noteService;
 
+    private final static String[] CATEGORY = {"fashion", "makeups", "food", "movement", "video", "travel", "beauty", "reading"};
+
     @RequestMapping("/indexNote")
     public String indexNote(HttpServletRequest request, HttpServletResponse response) {
-        List<Note> notes = noteService.getList();
-        if (notes.size() == 0) {
-            request.setAttribute("message", "没有数据");
-        } else {
-            request.setAttribute("notes", notes);
-        }
+        List<Note> notes;
+
+        notes = noteService.getListByCategory(1);
+
+        request.setAttribute("categorys", CATEGORY);
+        request.setAttribute("notes", notes);
 
         return "indexNote";
+    }
+
+    @RequestMapping("/getNotesByCategory")
+    @ResponseBody
+    public List<Note> getNotesByCategory(HttpServletRequest request, HttpServletResponse response) {
+        List<Note> notes;
+        if (null == request.getParameter("id")) {
+            notes = noteService.getListByCategory(1);
+        } else {
+            notes = noteService.getListByCategory(Integer.parseInt(request.getParameter("id")));
+        }
+        return notes;
     }
 
     @RequestMapping("/addNote")

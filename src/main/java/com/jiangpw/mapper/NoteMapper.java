@@ -24,5 +24,5 @@ public interface NoteMapper {
 
     int updateByPrimaryKey(Note record);
 
-    List<Note> getNotes();
+    List<Note> getNotes(int id);
 }

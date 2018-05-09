@@ -1,6 +1,7 @@
 .panel {
-    display: inline-block;
+    margin-bottom: 20px;
     width: 25%;
+    float: left;
 }
 
 .panel:hover {
@@ -32,4 +33,12 @@
 .favor_icon {
     width: 30px;
     height: 30px;
+}
+
+.tab-content {
+    margin-top: 20px;
+}
+
+.container {
+    padding: 20px;
 }

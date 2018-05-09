@@ -17,8 +17,8 @@ public class NoteServiceImpl implements NoteService {
     @Autowired
     private FavorMapper favorMapper;
 
-    public List<Note> getList() {
-        return noteMapper.getNotes();
+    public List<Note> getListByCategory(int id) {
+        return noteMapper.getNotes(id);
     }
 
     public void add(Note note) {

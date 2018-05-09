@@ -6,7 +6,7 @@ import com.jiangpw.entity.Note;
 import java.util.List;
 
 public interface NoteService {
-    List<Note> getList();
+    List<Note> getListByCategory(int id);
 
     void add(Note note);
 
