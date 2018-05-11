@@ -50,9 +50,9 @@
             <a href="#reading" name="9" aria-controls="reading" role="tab" data-toggle="tab">阅读</a>
         </li>
     </ul>
-    <div class="tab-content">
+    <div class="tab-content row">
         <div role="tabpanel" class="tab-pane fade in active" id="recommend">
-            <div class="panel panel-info" v-for="n in notes">
+            <div class="panel panel-info col-xs-6 col-md-3" v-for="n in notes">
                 <div class="panel-body">
                     <img :src="n.imgs[0].url" class="img-thumbnail">
                 </div>
@@ -73,7 +73,7 @@
         </div>
         <c:forEach items="${categorys}" var="c" varStatus="status">
             <div role="tabpanel" class="tab-pane fade" id="${c}">
-                <div class="panel panel-info" v-for="n in notes">
+                <div class="panel panel-info col-xs-6 col-md-3" v-for="n in notes">
                     <div class="panel-body">
                         <img v-bind:src="n.imgs[0].url" class="img-thumbnail">
                     </div>
@@ -93,6 +93,10 @@
                 </div>
             </div>
         </c:forEach>
+    </div>
+
+    <div>
+        <button type="button" class="btn btn-success btn-circle" id="add">添加</button>
     </div>
 
     <script>
@@ -128,8 +132,12 @@
             $('.tab-pane').masonry({
                 // options...
                 itemSelector: '.panel',
-                columnWidth: 200
+                columnWidth: 200,
             });
+        })
+
+        $('#add').click(function () {
+            location.href = 'indexAddNote';
         })
     </script>
 </div>

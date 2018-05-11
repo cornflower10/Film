@@ -354,6 +354,66 @@ public class ImgExample {
             addCriterion("updatetime not between", value1, value2, "updatetime");
             return (Criteria) this;
         }
+
+        public Criteria andNoteidIsNull() {
+            addCriterion("noteid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoteidIsNotNull() {
+            addCriterion("noteid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoteidEqualTo(Integer value) {
+            addCriterion("noteid =", value, "noteid");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoteidNotEqualTo(Integer value) {
+            addCriterion("noteid <>", value, "noteid");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoteidGreaterThan(Integer value) {
+            addCriterion("noteid >", value, "noteid");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoteidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("noteid >=", value, "noteid");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoteidLessThan(Integer value) {
+            addCriterion("noteid <", value, "noteid");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoteidLessThanOrEqualTo(Integer value) {
+            addCriterion("noteid <=", value, "noteid");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoteidIn(List<Integer> values) {
+            addCriterion("noteid in", values, "noteid");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoteidNotIn(List<Integer> values) {
+            addCriterion("noteid not in", values, "noteid");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoteidBetween(Integer value1, Integer value2) {
+            addCriterion("noteid between", value1, value2, "noteid");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoteidNotBetween(Integer value1, Integer value2) {
+            addCriterion("noteid not between", value1, value2, "noteid");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

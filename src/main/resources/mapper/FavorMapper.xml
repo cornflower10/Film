@@ -56,10 +56,13 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from favor
     where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectLast"  resultMap="BaseResultMap">
+    SELECT  * FROM favor order by id DESC limit 1
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from favor

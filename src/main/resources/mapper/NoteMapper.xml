@@ -48,6 +48,9 @@
      LEFT JOIN img AS i ON n.id = i.noteid
      WHERE n.categoryid = #{id,jdbcType=INTEGER}
     </select>
+    <select id="selectLast" resultMap="BaseResultMap">
+        SELECT  * FROM note order by id DESC limit 1
+    </select>
     <sql id="Example_Where_Clause">
         <where>
             <foreach collection="oredCriteria" item="criteria" separator="or">

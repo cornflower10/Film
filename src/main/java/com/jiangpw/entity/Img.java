@@ -11,6 +11,8 @@ public class Img {
 
     private Date updatetime;
 
+    private Integer noteid;
+
     public Integer getId() {
         return id;
     }
@@ -41,5 +43,13 @@ public class Img {
 
     public void setUpdatetime(Date updatetime) {
         this.updatetime = updatetime;
+    }
+
+    public Integer getNoteid() {
+        return noteid;
+    }
+
+    public void setNoteid(Integer noteid) {
+        this.noteid = noteid;
     }
 }

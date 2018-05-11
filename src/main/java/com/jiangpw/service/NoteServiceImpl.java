@@ -1,9 +1,7 @@
 package com.jiangpw.service;
 
-import com.jiangpw.entity.Favor;
-import com.jiangpw.entity.Note;
-import com.jiangpw.mapper.FavorMapper;
-import com.jiangpw.mapper.NoteMapper;
+import com.jiangpw.entity.*;
+import com.jiangpw.mapper.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +14,15 @@ public class NoteServiceImpl implements NoteService {
 
     @Autowired
     private FavorMapper favorMapper;
+
+    @Autowired
+    private CategoryMapper categoryMapper;
+
+    @Autowired
+    private ReviewMapper reviewMapper;
+
+    @Autowired
+    private ImgMapper imgMapper;
 
     public List<Note> getListByCategory(int id) {
         return noteMapper.getNotes(id);
@@ -31,5 +38,33 @@ public class NoteServiceImpl implements NoteService {
 
     public void detail(int id) {
         noteMapper.selectByPrimaryKey(id);
+    }
+
+    public List<Category> getAllCategory() {
+        return categoryMapper.selectByExample(null);
+    }
+
+    public void addFavor(Favor favor) {
+        favorMapper.insert(favor);
+    }
+
+    public void addReview(Review review) {
+        reviewMapper.insert(review);
+    }
+
+    public Favor selectLastFavor() {
+        return favorMapper.selectLast();
+    }
+
+    public Review selectLastReview() {
+        return reviewMapper.selectLast();
+    }
+
+    public Note selectLastNote() {
+        return noteMapper.selectLast();
+    }
+
+    public void addImg(Img img) {
+        imgMapper.insert(img);
     }
 }

@@ -18,4 +18,6 @@ public interface FavorMapper {
     int updateByPrimaryKeySelective(Favor record);
 
     int updateByPrimaryKey(Favor record);
+
+    Favor selectLast();
 }

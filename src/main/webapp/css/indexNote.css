@@ -1,7 +1,5 @@
 .panel {
     margin-bottom: 20px;
-    width: 25%;
-    float: left;
 }
 
 .panel:hover {
@@ -41,4 +39,18 @@
 
 .container {
     padding: 20px;
+}
+
+.btn-circle {
+    text-align: center;
+    box-shadow: 2px 2px 1px #888888;
+    z-index: 1000;
+    position: fixed;
+    top: 2%;
+    right: 15%;
+    width: 70px;
+    height: 70px;
+    font-size: 20px;
+    line-height: 1.33;
+    border-radius: 35px;
 }
