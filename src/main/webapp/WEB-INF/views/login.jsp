@@ -15,11 +15,56 @@
 </head>
 <body>
 
-<form action="/user/login" method="post">
-    手机号：<input type="number" name="phone">
-    密码：<input type="password" name="password">
-    <input type="submit" class="btn btn-success" value="登录">
+<form action="##" method="post" id="login" onsubmit="return false">
+    <div id="login-tip">&nbsp;
+    </div>
+    <div >
+        手机号：<input type="number" name="phone" id="login-phone">
+    </div>
+    <div >
+        密码：<input type="password" name="password" id="passwd">
+    </div>
+    <div >
+        <input type="submit" class="btn btn-success" value="登录">
+    </div>
+
 </form>
 
+<script>
+     $( function(){
+     $(".btn-success").click(function(){
+      var phone = $("#login-phone").val();
+      var passwd = $("#passwd").val();
+         var regPhone = /^(0|86|17951)?(13[0-9]|15[012356789]|17[0135678]|18[0-9]|14[579]|852|853)[0-9]{8}$/;
+         if(!regPhone.test(phone)){
+             $("#login-tip").html("请输入正确的手机号")
+             return;
+         }
+         else if(passwd.length<1){
+         $("#login-tip").html("请输入登录密码")
+             return;
+         }else {
+             $("#login-tip").html("");
+         }
+
+         $.ajax({
+             url:"/user/login",
+             data:{
+                 phone:phone,
+                 password:passwd
+             },
+             type:"POST",
+             dataType:"json",
+             success:function (data) {
+                 
+             },
+             error:function (data) {
+                 
+             }
+         })
+         
+    });
+    })
+</script>
 </body>
 </html>
