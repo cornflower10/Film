@@ -82,8 +82,19 @@ public class NoteController {
 
         noteService.add(note);
 
-        int noteLastId = noteService.selectLastNote().getId();
+        BaseResult<String> baseResult = new BaseResult<String>();
+        baseResult.setCode("0");
+        baseResult.setMsg("OK");
+        baseResult.setData(noteService.selectLastNote().getId() + "");
 
+        return baseResult;
+    }
+
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    @ResponseBody
+    public BaseResult<String> upload(MultipartFile file, HttpServletRequest request) {
+
+        int noteId = Integer.parseInt(request.getParameter("noteId"));
         String path = request.getSession().getServletContext().getRealPath("upload");
         String fileName = UUID.randomUUID().toString() + ".png";
 
@@ -98,7 +109,7 @@ public class NoteController {
 
             Img img = new Img();
             img.setUrl("http://localhost:8080" + "/upload/" + fileName);
-            img.setNoteid(noteLastId);
+            img.setNoteid(noteId);
 
             noteService.addImg(img);
         } catch (IOException e) {

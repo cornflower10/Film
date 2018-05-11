@@ -67,23 +67,22 @@
         $('#file-fr').fileinput({
             theme: 'fa',
             language: 'zh',
-            uploadUrl: '/note/addNote',
+            uploadUrl: '/note/upload',
             allowedFileExtensions: ['jpg', 'png', 'gif'],
             showUpload: false,
             showPreview: true,
             showCaption: false,
-            maxFileCount: 9,
-            uploadExtraData: {
-                noteId: noteId,
-                content: $("#content").val(),
-                categoryid: $("#category option:selected").val()
+            uploadExtraData: function () {
+                return {'noteId': noteId};
             },
             layoutTemplates: {
                 actionUpload: '',//去除上传预览缩略图中的上传图片；
-                actionZoom: ''   //去除上传预览缩略图中的查看详情预览的缩略图标。
-            },
+                actionZoom:
+                    ''   //去除上传预览缩略图中的查看详情预览的缩略图标。
+            }
+            ,
         }).on("fileuploaded", function (e, data) {
-            /*alert("发布成功")*/
+            /* alert("发布成功")*/
         });
     })
 
@@ -96,7 +95,18 @@
         }
 
         if ($("#file-fr").val() != "") {
-            $('#file-fr').fileinput('upload');
+            $.ajax({
+                type: "POST",
+                url: "/note/addNote",
+                data: {content: $("#content").val(), categoryid: $("#category option:selected").val()},
+                dataType: "json",
+                success: function (data) {
+                    if (data.code == '0') {
+                        noteId = data.data;
+                        $('#file-fr').fileinput('upload');
+                    }
+                }
+            })
         } else {
             alert("请选择图片");
             return;
