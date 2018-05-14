@@ -1,11 +1,12 @@
 package com.jiangpw.service;
 
+import com.jiangpw.entity.BaseResult;
 import com.jiangpw.entity.User;
 
 public interface UserService {
     User findUserById(int id);
 
-    User login(long phone);
+    BaseResult<String> login(String phone,String passWord);
 
-    void regist(User user);
+    BaseResult<String> regist(String name,String phone,String passwd);
 }

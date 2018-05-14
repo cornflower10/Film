@@ -12,9 +12,10 @@
     <script src="../js/jQuery-2.1.4.min.js"></script>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <script src="../js/bootstrap.min.js"></script>
+    <link href="../css/login.css" rel="stylesheet">
 </head>
 <body>
-
+<div class="center">
 <form action="##" method="post" id="login" onsubmit="return false">
     <div id="login-tip">&nbsp;
     </div>
@@ -24,12 +25,14 @@
     <div >
         密码：<input type="password" name="password" id="passwd">
     </div>
+    <a id="forget" href="/user/regist">忘记登录密码</a>
+    <a id="regist" href="/user/regist">注册</a>
     <div >
         <input type="submit" class="btn btn-success" value="登录">
     </div>
 
 </form>
-
+</div>
 <script>
      $( function(){
      $(".btn-success").click(function(){
@@ -48,7 +51,7 @@
          }
 
          $.ajax({
-             url:"/user/login",
+             url:"/user/doLogin",
              data:{
                  phone:phone,
                  password:passwd
@@ -56,10 +59,14 @@
              type:"POST",
              dataType:"json",
              success:function (data) {
-                 
+                 if(data.success){
+                     window.location = "/note/indexNote";
+                 }else {
+                     $("#login-tip").html(data.msg);
+                 }
              },
              error:function (data) {
-                 
+                 $("#login-tip").html(data.msg);
              }
          })
          

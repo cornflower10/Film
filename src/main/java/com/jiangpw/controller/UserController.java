@@ -1,11 +1,14 @@
 package com.jiangpw.controller;
 
+import com.jiangpw.entity.BaseResult;
 import com.jiangpw.entity.User;
 import com.jiangpw.service.UserService;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,43 +29,50 @@ public class UserController {
 
     @RequestMapping("/login")
     public String login(Model model, HttpServletRequest request, HttpServletResponse response) {
-        if (null == request.getParameter("phone") || null == request.getParameter("password")) {
-            return "login";
-        } else {
-            long phone = Long.parseLong(request.getParameter("phone"));
-            String password = request.getParameter("password");
-
-            User user = userService.login(phone);
-
-            if (null == user) {
-                return null;
-            } else {
-                if (password.equals(user.getPassword())) {
-                    model.addAttribute("user", user);
-                    return "redirect:/note/indexNote";
-                } else {
-                    return null;
-                }
-            }
-        }
+//        if (null == request.getParameter("phone") || null == request.getParameter("password")) {
+//            return "login";
+//        } else {
+//            long phone = Long.parseLong(request.getParameter("phone"));
+//            String password = request.getParameter("password");
+//
+//            User user = userService.login(phone);
+//
+//            if (null == user) {
+//                return null;
+//            } else {
+//                if (password.equals(user.getPassword())) {
+//                    model.addAttribute("user", user);
+//                    return "redirect:/note/indexNote";
+//                } else {
+//                    return null;
+//                }
+//            }
+//        }
+        return "login";
     }
 
-    @RequestMapping("regist")
+    @RequestMapping("/doLogin")
+    @ResponseBody
+    public BaseResult<String> doLogin(String phone, String password, Model model, HttpServletRequest request, HttpServletResponse response) {
+        return userService.login(phone,password);
+    }
+
+    @RequestMapping("/regist")
     public String regist(HttpServletRequest request, HttpServletResponse response) {
-        if (null == request.getParameter("phone") || null == request.getParameter("username") || null == request.getParameter("password")) {
             return "regist";
-        } else {
-            long phone = Long.parseLong(request.getParameter("phone"));
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
 
-            User user = new User();
-            user.setUsername(username);
-            user.setPhone(phone);
-            user.setPassword(password);
+    }
 
-            userService.regist(user);
-            return "redirect:login";
+
+    @RequestMapping("/doRegist")
+    @ResponseBody
+    public BaseResult<String> doRegist(String phone, String password,String userName,HttpServletRequest request, HttpServletResponse response) {
+
+        BaseResult<String> result = userService.regist(phone,password,userName);
+        if(result.isSuccess()){
+            result =  userService.login(phone,password);
         }
+            return result;
+
     }
 }

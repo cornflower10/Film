@@ -1,9 +1,27 @@
 package com.jiangpw.entity;
 
 public class BaseResult<T> {
+    private boolean success;
     private String code;
     private String msg;
     private T data;
+
+    public BaseResult(boolean success, String msg) {
+        this.success = success;
+        this.msg = msg;
+    }
+
+    public BaseResult() {
+//        super();
+    }
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
 
     public String getCode() {
         return code;
