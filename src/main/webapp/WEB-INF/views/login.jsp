@@ -25,6 +25,12 @@
     <div >
         密码：<input type="password" name="password" id="passwd">
     </div>
+    <div style="margin-top: 10px" id = "verifycode">
+        <input type="text" name="code"  placeholder="验证码"
+               value="" class="page-input login-password"/>
+        <img src="/validateCode" alt="" style="width: 80px;height: 35px" id="verifyCodeImg" onclick='changeVerifyCode()'/>
+        <a id="changeVerifyCode" href='JavaScript:' onclick='changeVerifyCode()' >换一张</a>
+    </div>
     <a id="forget" href="/user/regist">忘记登录密码</a>
     <a id="regist" href="/user/regist">注册</a>
     <div >
@@ -72,6 +78,10 @@
          
     });
     })
+
+     function changeVerifyCode() {
+         $("#verifyCodeImg").attr("src","/validateCode?"+Math.random());
+     }
 </script>
 </body>
 </html>
