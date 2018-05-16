@@ -218,15 +218,9 @@
             <version>${spring.version}</version>
         </dependency>
         <dependency>
-            <groupId>spy</groupId>
+            <groupId>net.spy</groupId>
             <artifactId>spymemcached</artifactId>
-            <version>2.7.3</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.codehaus.jettison</groupId>
-                    <artifactId>jettison</artifactId>
-                </exclusion>
-            </exclusions>
+            <version>2.12.3</version>
         </dependency>
         <dependency>
         <groupId>com.github.axet</groupId>
