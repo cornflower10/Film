@@ -63,15 +63,18 @@ public class UserController {
 
     }
 
+    @RequestMapping("/check")
+    public String check(HttpServletRequest request, HttpServletResponse response) {
+        return "check";
+
+    }
+
 
     @RequestMapping("/doRegist")
     @ResponseBody
     public BaseResult<String> doRegist(String phone, String password,String userName,HttpServletRequest request, HttpServletResponse response) {
 
         BaseResult<String> result = userService.regist(phone,password,userName);
-        if(result.isSuccess()){
-            result =  userService.login(phone,password);
-        }
             return result;
 
     }

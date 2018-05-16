@@ -16,28 +16,44 @@
 </head>
 <body>
 <div class="center">
-<form action="##" method="post" id="login" onsubmit="return false">
-    <div id="login-tip">&nbsp;
-    </div>
-    <div >
-        手机号：<input type="number" name="phone" id="login-phone">
-    </div>
-    <div >
-        密码：<input type="password" name="password" id="passwd">
-    </div>
-    <div style="margin-top: 10px" id = "verifycode">
-        <input type="text" name="code"  placeholder="验证码"
-               value="" class="page-input login-password"/>
-        <img src="/validateCode" alt="" style="width: 80px;height: 35px" id="verifyCodeImg" onclick='changeVerifyCode()'/>
-        <a id="changeVerifyCode" href='JavaScript:' onclick='changeVerifyCode()' >换一张</a>
-    </div>
-    <a id="forget" href="/user/regist">忘记登录密码</a>
-    <a id="regist" href="/user/regist">注册</a>
-    <div >
-        <input type="submit" class="btn btn-success" value="登录">
-    </div>
+    <form class="form-horizontal" role="form" action="##" method="post" id="login" onsubmit="return false">
+       <div class="form-group">
+           <div class="col-sm-10" id="login-tip">
+           </div>
+       </div>
+        <div class="form-group">
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="login-phone" placeholder="手机号码">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="passwd" placeholder="密码">
+            </div>
+        </div>
+        <div class="form-group" style="margin-top: 10px" id = "verifycode">
+            <input type="text" name="code"  placeholder="验证码"
+                   value="" class="page-input login-password"/>
+            <img src="/validateCode" alt="" style="width: 80px;height: 35px" id="verifyCodeImg" onclick='changeVerifyCode()'/>
+            <a id="changeVerifyCode" href='JavaScript:' onclick='changeVerifyCode()' >换一张</a>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label>
+                        <a id="forget" href="/user/regist">忘记登录密码</a>
+                        <a id="regist" href="/user/regist">注册</a>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn-success btn btn-primary">登录</button>
+            </div>
+        </div>
+    </form>
 
-</form>
 </div>
 <script>
      $( function(){
