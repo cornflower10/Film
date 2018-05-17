@@ -56,6 +56,21 @@ public class NoteController {
         return "indexAddNote";
     }
 
+    @RequestMapping("/noteDetail")
+    public String noteDetail(HttpServletRequest request, HttpServletResponse response) {
+        String id = request.getParameter("id");
+        String userid = request.getParameter("userid");
+        List<Img> imgs = noteService.getImgByNoteId(Integer.parseInt(id));
+        request.setAttribute("imgs", imgs);
+
+        List<Comment> comments = noteService.getCommentByNoteId(Integer.parseInt(id));
+        request.setAttribute("comments", comments);
+
+        User user = noteService.selectUserById(Integer.parseInt(userid));
+        request.setAttribute("user", user);
+        return "noteDetail";
+    }
+
     @RequestMapping(value = "/addNote", method = RequestMethod.POST)
     @ResponseBody
     public BaseResult<String> addNote(MultipartFile file, HttpServletRequest request) {

@@ -2,6 +2,7 @@ package com.jiangpw.mapper;
 
 import com.jiangpw.entity.Img;
 import com.jiangpw.entity.ImgExample;
+
 import java.util.List;
 
 public interface ImgMapper {
@@ -18,4 +19,6 @@ public interface ImgMapper {
     int updateByPrimaryKeySelective(Img record);
 
     int updateByPrimaryKey(Img record);
+
+    List<Img> selectAllImgByNoteId(int noteId);
 }

@@ -52,7 +52,7 @@
     </ul>
     <div class="tab-content row">
         <div role="tabpanel" class="tab-pane fade in active" id="recommend">
-            <div class="panel panel-info col-xs-6 col-md-3" v-for="n in notes">
+            <div class="panel panel-info col-xs-6 col-md-3" v-for="n in notes" @click="toDetail(n.id,n.user.id)">
                 <div class="panel-body">
                     <img :src="n.imgs[0].url" class="img-thumbnail">
                 </div>
@@ -73,7 +73,7 @@
         </div>
         <c:forEach items="${categorys}" var="c" varStatus="status">
             <div role="tabpanel" class="tab-pane fade" id="${c}">
-                <div class="panel panel-info col-xs-6 col-md-3" v-for="n in notes">
+                <div class="panel panel-info col-xs-6 col-md-3" v-for="n in notes" @click="toDetail(n.id,n.user.id)">
                     <div class="panel-body">
                         <img v-bind:src="n.imgs[0].url" class="img-thumbnail">
                     </div>
@@ -114,7 +114,11 @@
                     vm.notes = res.data;
                 });
             },
-            methods: {}
+            methods: {
+                toDetail: function (id, userid) {
+                    location.href = "noteDetail?id=" + id + "&userid=" + userid;
+                }
+            }
         })
 
         $('#index-note-tab a').click(function (e) {

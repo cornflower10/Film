@@ -1,0 +1,63 @@
+.carousel-control {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.head {
+    width: 30px;
+    height: 30px;
+}
+
+.headIcon {
+    display: inline-block;
+}
+
+.commentMessage {
+    display: inline-block;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+}
+
+.line {
+    height: 5px;
+}
+
+.content {
+    margin-top: 20px;
+}
+
+.username {
+    font-size: 18px;
+    color: #222222;
+}
+
+.createtime {
+    color: #5e5e5e;
+}
+
+.tip {
+    position: relative;
+    float: right;
+    top: 0;
+}
+
+.user {
+    height: 120px;
+    border: 1px #CCCCCC solid;
+}
+
+.other {
+    margin-top: 10px;
+    height: 260px;
+    border: 1px #CCCCCC solid;
+}
+
+.userinfo {
+    display: flex;
+    align-items: center;
+}

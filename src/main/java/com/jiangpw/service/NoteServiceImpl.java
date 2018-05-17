@@ -24,6 +24,12 @@ public class NoteServiceImpl implements NoteService {
     @Autowired
     private ImgMapper imgMapper;
 
+    @Autowired
+    private CommentMapper commentMapper;
+
+    @Autowired
+    private UserMapper userMapper;
+
     public List<Note> getListByCategory(int id) {
         return noteMapper.getNotes(id);
     }
@@ -66,5 +72,17 @@ public class NoteServiceImpl implements NoteService {
 
     public void addImg(Img img) {
         imgMapper.insert(img);
+    }
+
+    public List<Img> getImgByNoteId(int noteId) {
+        return imgMapper.selectAllImgByNoteId(noteId);
+    }
+
+    public List<Comment> getCommentByNoteId(int noteId) {
+        return commentMapper.selectAllCommentByNoteId(noteId);
+    }
+
+    public User selectUserById(int userid) {
+        return userMapper.selectByPrimaryKey(userid);
     }
 }

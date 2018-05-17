@@ -26,4 +26,10 @@ public interface NoteService {
     Note selectLastNote();
 
     void addImg(Img img);
+
+    List<Img> getImgByNoteId(int noteId);
+
+    List<Comment> getCommentByNoteId(int noteId);
+
+    User selectUserById(int userid);
 }
