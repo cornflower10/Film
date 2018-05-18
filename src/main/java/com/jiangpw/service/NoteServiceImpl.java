@@ -30,6 +30,9 @@ public class NoteServiceImpl implements NoteService {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private ReplyMapper replyMapper;
+
     public List<Note> getListByCategory(int id) {
         return noteMapper.getNotes(id);
     }
@@ -84,5 +87,13 @@ public class NoteServiceImpl implements NoteService {
 
     public User selectUserById(int userid) {
         return userMapper.selectByPrimaryKey(userid);
+    }
+
+    public List<Reply> getReplyByCommentId(int commentId) {
+        return replyMapper.getReplyByCommentId(commentId);
+    }
+
+    public List<Note> getNotesByUserId(int userid) {
+        return noteMapper.getNotesByUserId(userid);
     }
 }

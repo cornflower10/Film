@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core_1_1" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: jiangpw
@@ -61,6 +62,12 @@
             <div class="other">
                 <div><h3>相关笔记</h3></div>
                 <div class="line" style="border-bottom:1px solid #CCC"></div>
+                <c:forEach items="${notes}" var="s" varStatus="ssta">
+                    <div>
+                        <div><img src="${s.imgs[0].url}" class="otherNoteImg thumbnail"></div>
+                        <div class="otherNoteContent">${s.content}</div>
+                    </div>
+                </c:forEach>
             </div>
         </div>
     </div>
@@ -74,11 +81,18 @@
                     </div>
                     <div class="commentMessage">
                         <div class="username">${c.user.username}</div>
-                        <div class="createtime">${c.createtime}</div>
+                        <div class="createtime"><fmt:formatDate value="${c.createtime}"
+                                                                pattern="yyyy/MM/dd HH:mm:SS"/></div>
                         <div class="content">${c.content}</div>
                     </div>
                 </div>
             </div>
+            <c:forEach items="${c.replies}" var="r" varStatus="rsta">
+                <div class="reply">
+                    <div class="replyuser">${r.user.username}回复${r.user1.username}:</div>
+                    <div class="replycontent">${r.replaycontent}</div>
+                </div>
+            </c:forEach>
             <div class="line" style="border-bottom:1px solid #CCC"></div>
         </c:forEach>
     </div>

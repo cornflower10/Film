@@ -15,6 +15,7 @@
 }
 
 .commentMessage {
+    margin-left: 10px;
     display: inline-block;
 }
 
@@ -60,4 +61,30 @@
 .userinfo {
     display: flex;
     align-items: center;
+}
+
+.replyuser {
+    font-weight: bold;
+    display: inline-block;
+}
+
+.replycontent {
+    display: inline-block;
+}
+
+.reply {
+    padding: 10px;
+    background-color: #CCCCCC;
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
+.otherNoteImg {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+
+.otherNoteContent {
+    display: inline-block;
 }

@@ -1,6 +1,8 @@
 package com.jiangpw.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Comment {
     private Integer id;
@@ -16,6 +18,16 @@ public class Comment {
     private Date updatetime;
 
     private User user;
+
+    private List<Reply> replies = new ArrayList<Reply>();
+
+    public List<Reply> getReplies() {
+        return replies;
+    }
+
+    public void setReplies(List<Reply> replies) {
+        this.replies = replies;
+    }
 
     public User getUser() {
         return user;

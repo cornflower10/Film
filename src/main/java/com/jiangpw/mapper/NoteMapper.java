@@ -27,4 +27,6 @@ public interface NoteMapper {
     List<Note> getNotes(int id);
 
     Note selectLast();
+
+    List<Note> getNotesByUserId(int userid);
 }

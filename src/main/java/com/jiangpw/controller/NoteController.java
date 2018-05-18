@@ -66,6 +66,18 @@ public class NoteController {
         List<Comment> comments = noteService.getCommentByNoteId(Integer.parseInt(id));
         request.setAttribute("comments", comments);
 
+        if (null != comments && comments.size() > 0) {
+            for (Comment c :
+                    comments) {
+                if (null != noteService.getReplyByCommentId(c.getId()) && noteService.getReplyByCommentId(c.getId()).size() > 0) {
+                    c.getReplies().addAll(noteService.getReplyByCommentId(c.getId()));
+                }
+            }
+        }
+
+        List<Note> notes = noteService.getNotesByUserId(Integer.parseInt(userid));
+        request.setAttribute("notes", notes);
+
         User user = noteService.selectUserById(Integer.parseInt(userid));
         request.setAttribute("user", user);
         return "noteDetail";
