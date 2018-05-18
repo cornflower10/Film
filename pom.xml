@@ -227,7 +227,12 @@
         <artifactId>kaptcha</artifactId>
         <version>0.0.7</version>
     </dependency>
-
+        <!-- JavaMail相关依赖 -->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.7</version>
+        </dependency>
     </dependencies>
 
 </project>

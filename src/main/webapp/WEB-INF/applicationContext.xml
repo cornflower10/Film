@@ -54,7 +54,7 @@
     <property name="useNagleAlgorithm" value="false" />
   </bean>
 
-  <bean id="contextUtils" class="com.jiangpw.utils.ContextUtils" />
+  <bean id="ContextUtils" class="com.jiangpw.utils.ContextUtils" />
   <!-- Activate Avalon Bridge -->
   <avalon:bridge/>
 

@@ -20,6 +20,7 @@
     用户名：<input type="text" name="" id="user">
     手机号：<input type="number" name="" id="phone">
     密码：<input type="password" name="" id="password">
+    邮箱：<input type="email" name="" id="email">
     <input type="submit" class="btn btn-success" value="注册">
 </form>
 
@@ -29,9 +30,13 @@
             var name =  $("#username").val();
             var phone = $("#phone").val();
             var passwd = $("#password").val();
+            var email = $("#email").val();
             var regPhone = /^(0|86|17951)?(13[0-9]|15[012356789]|17[0135678]|18[0-9]|14[579]|852|853)[0-9]{8}$/;
             if(null==name){
                 $("#login-tip").html("请输入用户名")
+            }
+            if(null==email){
+                $("#login-tip").html("请输入邮箱")
             }
             if(!regPhone.test(phone)){
                 $("#login-tip").html("请输入正确的手机号")
@@ -49,7 +54,8 @@
                 data:{
                     phone:phone,
                     password:passwd,
-                    userName:name
+                    userName:name,
+                    email:email
                 },
                 type:"POST",
                 dataType:"json",

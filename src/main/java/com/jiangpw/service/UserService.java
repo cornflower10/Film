@@ -8,5 +8,5 @@ public interface UserService {
 
     BaseResult<String> login(String phone,String passWord);
 
-    BaseResult<String> regist(String name,String phone,String passwd);
+    BaseResult<String> regist(String phone, String password,String userName,String email);
 }

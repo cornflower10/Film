@@ -31,7 +31,7 @@
                 <input type="text" class="form-control" id="passwd" placeholder="密码">
             </div>
         </div>
-        <div class="form-group" style="margin-top: 10px" id = "verifycode">
+        <div class="form-group"  id = "verifycode">
             <input type="text" name="code"  placeholder="验证码"
                    value="" class="page-input login-password"/>
             <img src="/validateCode" alt="" style="width: 80px;height: 35px" id="verifyCodeImg" onclick='changeVerifyCode()'/>
