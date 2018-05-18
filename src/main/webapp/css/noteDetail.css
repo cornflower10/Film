@@ -53,12 +53,14 @@
 }
 
 .other {
+    overflow: hidden;
     margin-top: 10px;
-    height: 260px;
+    height: 280px;
     border: 1px #CCCCCC solid;
 }
 
 .userinfo {
+    margin: 10px;
     display: flex;
     align-items: center;
 }
@@ -73,6 +75,8 @@
 }
 
 .reply {
+    display: flex;
+    align-items: center;
     padding: 10px;
     background-color: #CCCCCC;
     margin-top: 20px;
@@ -87,4 +91,15 @@
 
 .otherNoteContent {
     display: inline-block;
+}
+
+.otherNote {
+    overflow: hidden;
+    margin: 5px 10px 5px 10px;
+    display: flex;
+    align-items: center;
+}
+
+.noteContent{
+    font-size: 20px;
 }

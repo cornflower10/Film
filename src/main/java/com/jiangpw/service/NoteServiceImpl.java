@@ -96,4 +96,8 @@ public class NoteServiceImpl implements NoteService {
     public List<Note> getNotesByUserId(int userid) {
         return noteMapper.getNotesByUserId(userid);
     }
+
+    public Note selectNote(int id) {
+        return noteMapper.selectNoteById(id);
+    }
 }

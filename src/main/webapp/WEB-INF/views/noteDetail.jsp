@@ -52,7 +52,7 @@
 
         <div class="tip col-xs-4 col-md-4">
             <div class="user">
-                <div><h3>笔记作者</h3></div>
+                <div style="margin: 10px"><h3>笔记作者</h3></div>
                 <div class="line" style="border-bottom:1px solid #CCC"></div>
                 <div class="userinfo">
                     <img class="head img-circle" src="${user.img}">
@@ -60,16 +60,20 @@
                 </div>
             </div>
             <div class="other">
-                <div><h3>相关笔记</h3></div>
+                <div style="margin: 10px"><h3>相关笔记</h3></div>
                 <div class="line" style="border-bottom:1px solid #CCC"></div>
                 <c:forEach items="${notes}" var="s" varStatus="ssta">
-                    <div>
+                    <div class="otherNote">
                         <div><img src="${s.imgs[0].url}" class="otherNoteImg thumbnail"></div>
                         <div class="otherNoteContent">${s.content}</div>
                     </div>
                 </c:forEach>
             </div>
         </div>
+    </div>
+    <div><h3 style="font-weight: bold">笔记内容</h3></div>
+    <div class="noteContent">
+        ${note.content}
     </div>
     <div><h3 style="font-weight: bold">笔记评论</h3></div>
     <div>

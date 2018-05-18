@@ -63,6 +63,10 @@
     <select id="selectLast" resultMap="BaseResultMap">
         SELECT  * FROM note order by id DESC limit 1
     </select>
+    <select id="selectNoteById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        SELECT  * FROM note
+        WHERE id = #{id,jdbcType=INTEGER}
+    </select>
     <sql id="Example_Where_Clause">
         <where>
             <foreach collection="oredCriteria" item="criteria" separator="or">

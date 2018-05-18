@@ -36,4 +36,6 @@ public interface NoteService {
     List<Reply> getReplyByCommentId(int commentId);
 
     List<Note> getNotesByUserId(int userid);
+
+    Note selectNote(int id);
 }

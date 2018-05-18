@@ -80,6 +80,9 @@ public class NoteController {
 
         User user = noteService.selectUserById(Integer.parseInt(userid));
         request.setAttribute("user", user);
+
+        Note note = noteService.selectNote(Integer.parseInt(id));
+        request.setAttribute("note", note);
         return "noteDetail";
     }
 
