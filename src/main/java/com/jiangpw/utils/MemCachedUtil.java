@@ -17,8 +17,8 @@ public class MemCachedUtil {
 
 	// 默认设置缓存有效时间 1 天 单位s
 	public final static CacheTimes DEFAULT_CACHE_TIME = CacheTimes.ONE_DAY;
-	@Autowired
-	private static MemcachedClient memcachedClient = (MemcachedClient)ContextUtils.getBean("memcachedClient");;
+//	@Autowired
+	private static MemcachedClient memcachedClient = (MemcachedClient)ContextUtils.getBean("memcachedClient");
 
 	/**
 	 * 默认设置memcache 缓存

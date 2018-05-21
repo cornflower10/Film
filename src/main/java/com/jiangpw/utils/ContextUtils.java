@@ -4,6 +4,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.net.URI;
 
+@Component
 public class ContextUtils implements ApplicationContextAware, DisposableBean {
 	
 	private static ContextUtils _this=null;
@@ -142,15 +144,15 @@ public class ContextUtils implements ApplicationContextAware, DisposableBean {
 		return _this.response.get();
 	}
 
-//	@Override
-//	public void destroy() throws Exception {
-//		_setApplicationContext(null);
-//	}
-//
-//	@Override
-//	public void setApplicationContext(ApplicationContext context) throws BeansException {
-//		_setApplicationContext(context);
-//	}
+	@Override
+	public void destroy() throws Exception {
+		_setApplicationContext(null);
+	}
+
+	@Override
+	public void setApplicationContext(ApplicationContext context) throws BeansException {
+		_setApplicationContext(context);
+	}
 
 	public String getToday() {
 		return _this.today;
@@ -160,11 +162,11 @@ public class ContextUtils implements ApplicationContextAware, DisposableBean {
 		_this.today = today;
 	}
 
-	public void destroy() throws Exception {
-		_setApplicationContext(null);
-	}
-
-	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-		_setApplicationContext(applicationContext);
-	}
+//	public void destroy() throws Exception {
+//		_setApplicationContext(null);
+//	}
+//
+//	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+//		_setApplicationContext(applicationContext);
+//	}
 }
