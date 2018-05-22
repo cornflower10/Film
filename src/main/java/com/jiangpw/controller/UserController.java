@@ -71,9 +71,9 @@ public class UserController {
 
     @RequestMapping("/doRegist")
     @ResponseBody
-    public BaseResult<String> doRegist(String phone, String password,String userName,String email,HttpServletRequest request, HttpServletResponse response) {
+    public BaseResult<String> doRegist(String phone, String password,String userName,String email,String val,HttpServletRequest request, HttpServletResponse response) {
 
-        BaseResult<String> result = userService.regist(phone,password,userName,email);
+        BaseResult<String> result = userService.regist(phone,password,userName,email,val,request);
             return result;
 
     }

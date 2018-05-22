@@ -39,10 +39,19 @@ public class AuthFilter implements Filter {
 		// 获取domain
 //		String domain = ServerDomainUtils.getDomainByServerName(serverName);
 ////		ServerDomainUtils.setDomain(domain);
+//				String currentURL = httpRequest.getRequestURI();
+//				String targetURL = currentURL.substring(httpRequest.getContextPath().length(),
+//				currentURL.length());
+
 		if (!isInWhiteList(httpRequest.getRequestURI())
-				&& (null==httpRequest.getSession(false)
-				||null== SessionUtil.getSessionAttribute(httpRequest,Constants.SESSION_KEY))) {
-			httpResponse.sendRedirect("/user/login");
+				 ) {
+			if(null==httpRequest.getSession(false)
+					||null== SessionUtil.getSessionAttribute(httpRequest,Constants.SESSION_KEY)){
+				httpResponse.sendRedirect("/user/login");
+			}else {
+				chain.doFilter(request, response);
+			}
+
 		}else {
 
 			chain.doFilter(request, response);

@@ -10,5 +10,5 @@ public interface UserService {
 
     BaseResult<String> login(String phone,String passWord,String val,HttpServletRequest request);
 
-    BaseResult<String> regist(String phone, String password,String userName,String email);
+    BaseResult<String> regist(String phone, String password,String userName,String email,String val,HttpServletRequest request);
 }

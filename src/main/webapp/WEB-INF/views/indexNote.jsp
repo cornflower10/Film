@@ -11,10 +11,10 @@
 <html>
 <head>
     <title>笔记列表</title>
-    <script src="../js/jQuery-2.1.4.min.js"></script>
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <script src="../js/bootstrap.min.js"></script>
-    <link href="../css/indexNote.css" rel="stylesheet">
+    <script src="../../js/jquery-1.11.2.js"></script>
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../js/bootstrap.min.js"></script>
+    <link href="../../css/indexNote.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.4"></script>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>

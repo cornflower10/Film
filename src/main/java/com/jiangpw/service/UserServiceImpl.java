@@ -65,7 +65,8 @@ public class UserServiceImpl implements UserService {
         }
 
     @Override
-    public BaseResult<String> regist(String phone, String password, String userName, String email) {
+    public BaseResult<String> regist(String phone, String password, String userName,
+                                     String email,String val,HttpServletRequest request) {
 
 
         if (StringUtils.isBlank(userName)) {
@@ -76,6 +77,14 @@ public class UserServiceImpl implements UserService {
         }
         if (StringUtils.isBlank(password)) {
             return new BaseResult<String>(false, "请填写密码！");
+        }
+
+        if (StringUtils.isBlank(val)) {
+            return new BaseResult<String>(false, "请填写图形验证码！");
+        }else {
+            if(!val.equals(SessionUtil.getSessionAttribute(request,Constants.SESSION_KEY_VAL))){
+                return new BaseResult<String>(false, "验证码错误！");
+            }
         }
 
         if (StringUtils.isBlank(email)) {
