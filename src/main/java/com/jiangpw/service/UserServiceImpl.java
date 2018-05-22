@@ -32,57 +32,69 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectByPrimaryKey(id);
     }
 
+
     @Override
-    public BaseResult<String> login(String phone, String passWord,HttpServletRequest request) {
-        if(StringUtils.isBlank(phone)){
-            return new BaseResult<String>(false,"请填写手机号码！");
+    public BaseResult<String> login(String phone, String passWord,String val,HttpServletRequest request) {
+        if (StringUtils.isBlank(phone)) {
+            return new BaseResult<String>(false, "请填写手机号码！");
         }
-        if(StringUtils.isBlank(passWord)){
-            return new BaseResult<String>(false,"请填写密码！");
+            if (StringUtils.isBlank(phone)) {
+                return new BaseResult<String>(false, "请填写手机号码！");
+            }
+            if (StringUtils.isBlank(passWord)) {
+                return new BaseResult<String>(false, "请填写密码！");
+            }
+            User user = userMapper.selectByPhone(Long.parseLong(phone));
+            if (user == null) {
+                return new BaseResult<String>(false, "该手机号码未注册！");
+            }
+            if (!user.getPassword().equals(passWord)) {
+                return new BaseResult<String>(false, "手机号或密码错误！");
+            }
+        if (StringUtils.isBlank(val)) {
+            return new BaseResult<String>(false, "请填写验证码！");
+        }else {
+                if(!val.equals(SessionUtil.getSessionAttribute(request,Constants.SESSION_KEY_VAL))){
+                    return new BaseResult<String>(false, "验证码错误！");
+                }
         }
-       User user =  userMapper.selectByPhone(Long.parseLong(phone));
-        if(user==null){
-            return new BaseResult<String>(false,"该手机号码未注册！");
+
+            SessionUtil.setSessionAttribute(request, Constants.SESSION_KEY, user);
+            SessionUtil.removeSessionAttribute(request, Constants.SESSION_KEY_VAL);
+            return new BaseResult<String>(true, "登陆成功");
         }
-        if(!user.getPassword().equals(passWord)){
-            return new BaseResult<String>(false,"手机号或密码错误！");
-        }
-        SessionUtil.setSessionAttribute(request,Constants.SESSION_KEY,user);
-        SessionUtil.removeSessionAttribute(request,Constants.SESSION_KEY_VAL);
-         return new BaseResult<String>(true,"登陆成功");
-    }
 
     @Override
     public BaseResult<String> regist(String phone, String password, String userName, String email) {
 
 
-        if(StringUtils.isBlank(userName)){
-            return new BaseResult<String>(false,"请填写用户名！");
+        if (StringUtils.isBlank(userName)) {
+            return new BaseResult<String>(false, "请填写用户名！");
         }
-        if(StringUtils.isBlank(phone)){
-            return new BaseResult<String>(false,"请填写手机号码！");
+        if (StringUtils.isBlank(phone)) {
+            return new BaseResult<String>(false, "请填写手机号码！");
         }
-        if(StringUtils.isBlank(password)){
-            return new BaseResult<String>(false,"请填写密码！");
+        if (StringUtils.isBlank(password)) {
+            return new BaseResult<String>(false, "请填写密码！");
         }
 
-        if(StringUtils.isBlank(email)){
-            return new BaseResult<String>(false,"请填写邮箱！");
-        }else {
-            if(!email.matches("^\\w+@(\\w+\\.)+\\w+$")){
-                return new BaseResult<String>(false,"邮箱格式错误！");
+        if (StringUtils.isBlank(email)) {
+            return new BaseResult<String>(false, "请填写邮箱！");
+        } else {
+            if (!email.matches("^\\w+@(\\w+\\.)+\\w+$")) {
+                return new BaseResult<String>(false, "邮箱格式错误！");
             }
         }
-        User user =  userMapper.selectByPhone(Long.parseLong(phone));
-        if(null!=user){
-            if(user.getUsername().equals(userName.trim())){
-                return new BaseResult<String>(false,"该用户名已注册！");
+        User user = userMapper.selectByPhone(Long.parseLong(phone));
+        if (null != user) {
+            if (user.getUsername().equals(userName.trim())) {
+                return new BaseResult<String>(false, "该用户名已注册！");
             }
         }
-        if(null!=user){
-            return new BaseResult<String>(false,"该手机号码已注册！");
+        if (null != user) {
+            return new BaseResult<String>(false, "该手机号码已注册！");
         }
-        if(null==user){
+        if (null == user) {
             try {
                 user = new User();
                 user.setPhone(Long.parseLong(phone));
@@ -102,17 +114,17 @@ public class UserServiceImpl implements UserService {
                 email1.setUserid(userID);
                 email1.setCode(code);
                 emailMapper.insert(email1);
-                new Thread(new MailUtil(email,code ,MailUtil.JIHUO)).start();
+                new Thread(new MailUtil(email, code, MailUtil.JIHUO)).start();
 
-            }catch (Exception e){
+            } catch (Exception e) {
 
-                return new BaseResult<String>(true,"注册失败");
+                return new BaseResult<String>(true, "注册失败");
             }
 
-            return new BaseResult<String>(true,"注册成功");
+            return new BaseResult<String>(true, "注册成功");
         }
 
-        return new BaseResult<String>(false,"注册失败");
+        return new BaseResult<String>(false, "注册失败");
     }
 
     public User login(long phone) {

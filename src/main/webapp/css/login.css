@@ -1,3 +1,10 @@
 .center {
     position: absolute; width: 500px; height: 500px; margin: auto; top: 0; left: 0; bottom: 0; right: 0; background-color: #ffffff; overflow-x: hidden; overflow-y: hidden;
 }
+/*input style*/
+.page-input {
+    border: 1px solid #c0cad2;
+    height: 36px;
+    padding-left: 10px;
+    line-height: 36px;
+}

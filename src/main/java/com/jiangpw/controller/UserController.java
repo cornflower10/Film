@@ -52,8 +52,8 @@ public class UserController {
 
     @RequestMapping("/doLogin")
     @ResponseBody
-    public BaseResult<String> doLogin(String phone, String password, Model model, HttpServletRequest request, HttpServletResponse response) {
-        return userService.login(phone,password,request);
+    public BaseResult<String> doLogin(String phone, String password,String val, Model model, HttpServletRequest request, HttpServletResponse response) {
+        return userService.login(phone,password,val,request);
     }
 
     @RequestMapping("/regist")

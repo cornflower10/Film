@@ -84,7 +84,7 @@
                                 <span><img v-bind:src="n.user.img" class="head img-circle"></span>
                                 <span>{{n.user.username}}</span>
                             </div>
-                            <div class="favor">
+                            <div class="favor" @click="like(n.id)">
                                 <span> <img src="../img/favor.png" alt="..." class="favor_icon"></span>
                                 <span>{{n.favor.likecount}}</span>
                             </div>
@@ -117,6 +117,9 @@
             methods: {
                 toDetail: function (id, userid) {
                     location.href = "noteDetail?id=" + id + "&userid=" + userid;
+                },
+                like: function (id) {
+                    alert("点赞" + id);
                 }
             }
         })
