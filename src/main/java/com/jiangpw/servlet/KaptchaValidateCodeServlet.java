@@ -2,10 +2,7 @@ package com.jiangpw.servlet;
 
 import com.google.code.kaptcha.Producer;
 import com.google.code.kaptcha.util.Config;
-
-import com.jiangpw.utils.CacheTimes;
-import com.jiangpw.utils.CookieUtils;
-import com.jiangpw.utils.MemCachedUtil;
+import com.jiangpw.utils.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -70,8 +67,9 @@ public class KaptchaValidateCodeServlet extends HttpServlet implements Servlet {
 			BufferedImage bi = this.kaptchaProducer.createImage(capText);
 			out = response.getOutputStream();
 			ImageIO.write(bi, "jpg", out);
-			// 缓存设置10分钟
-			MemCachedUtil.setCache(sessionId, capText, CacheTimes.TEN_MINUTES);
+
+//			MemCachedUtil.setCache(sessionId, capText, CacheTimes.TEN_MINUTES);
+			SessionUtil.setSessionAttribute(request, Constants.SESSION_KEY_VAL,capText);
 		} catch (Exception e) {
             logger.error("异常", e);
 		} finally {

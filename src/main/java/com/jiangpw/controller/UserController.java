@@ -3,7 +3,6 @@ package com.jiangpw.controller;
 import com.jiangpw.entity.BaseResult;
 import com.jiangpw.entity.User;
 import com.jiangpw.service.UserService;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,7 +53,7 @@ public class UserController {
     @RequestMapping("/doLogin")
     @ResponseBody
     public BaseResult<String> doLogin(String phone, String password, Model model, HttpServletRequest request, HttpServletResponse response) {
-        return userService.login(phone,password);
+        return userService.login(phone,password,request);
     }
 
     @RequestMapping("/regist")

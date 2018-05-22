@@ -8,14 +8,15 @@ import com.jiangpw.mapper.EmailMapper;
 import com.jiangpw.mapper.UserMapper;
 import com.jiangpw.mapper.UserVIPMapper;
 import com.jiangpw.utils.CommonUtils;
+import com.jiangpw.utils.Constants;
 import com.jiangpw.utils.MailUtil;
-import com.sun.javafx.util.Utils;
+import com.jiangpw.utils.SessionUtil;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
-import java.util.UUID;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
@@ -26,11 +27,13 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private EmailMapper emailMapper;
 
+    @Override
     public User findUserById(int id) {
         return userMapper.selectByPrimaryKey(id);
     }
 
-    public BaseResult<String> login(String phone, String passWord) {
+    @Override
+    public BaseResult<String> login(String phone, String passWord,HttpServletRequest request) {
         if(StringUtils.isBlank(phone)){
             return new BaseResult<String>(false,"请填写手机号码！");
         }
@@ -44,10 +47,13 @@ public class UserServiceImpl implements UserService {
         if(!user.getPassword().equals(passWord)){
             return new BaseResult<String>(false,"手机号或密码错误！");
         }
+        SessionUtil.setSessionAttribute(request,Constants.SESSION_KEY,user);
+        SessionUtil.removeSessionAttribute(request,Constants.SESSION_KEY_VAL);
          return new BaseResult<String>(true,"登陆成功");
     }
 
-    public BaseResult<String> regist(String phone, String password,String userName,String email) {
+    @Override
+    public BaseResult<String> regist(String phone, String password, String userName, String email) {
 
 
         if(StringUtils.isBlank(userName)){
