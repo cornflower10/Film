@@ -63,7 +63,7 @@
                 <div style="margin: 10px"><h3>相关笔记</h3></div>
                 <div class="line" style="border-bottom:1px solid #CCC"></div>
                 <c:forEach items="${notes}" var="s" varStatus="ssta">
-                    <div class="otherNote">
+                    <div class="otherNote" onclick="toDetail('${s.id}','${user.id}')">
                         <div><img src="${s.imgs[0].url}" class="otherNoteImg thumbnail"></div>
                         <div class="otherNoteContent">${s.content}</div>
                     </div>
@@ -76,30 +76,91 @@
         ${note.content}
     </div>
     <div><h3 style="font-weight: bold">笔记评论</h3></div>
-    <div>
-        <c:forEach items="${comments}" var="c" varStatus="status">
-            <div class="row">
-                <div class="item col-xs-6 col-md-6">
-                    <div class="headIcon">
-                        <img src="${c.user.img}" class="head img-circle">
-                    </div>
-                    <div class="commentMessage">
-                        <div class="username">${c.user.username}</div>
-                        <div class="createtime"><fmt:formatDate value="${c.createtime}"
-                                                                pattern="yyyy/MM/dd HH:mm:SS"/></div>
-                        <div class="content">${c.content}</div>
+    <div class="reply_area">
+        <img src=../img/left.png class="currentUser img-circle">
+        <div class="col-sm-10">
+            <textarea class="form-control" rows="4" id="replyContent" placeholder="写下你的评论"></textarea>
+        </div>
+        <div class="replySend">
+            <div class="cancel">取消</div>
+            <div class="send">发送</div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <c:forEach items="${comments}" var="c" varStatus="status">
+        <div class="row">
+            <div class="item col-xs-6 col-md-6">
+                <div class="headIcon">
+                    <img src="${c.user.img}" class="head img-circle">
+                </div>
+                <div class="commentMessage">
+                    <div class="username">${c.user.username}</div>
+                    <div class="createtime"><fmt:formatDate value="${c.createtime}"
+                                                            pattern="yyyy/MM/dd HH:mm:SS"/></div>
+                    <div class="content">${c.content}</div>
+                    <div class="replyArea" onclick="reply(${c.id},'${c.user.username}')"><img src="../img/reply.png"
+                                                                                              class="img-circle"> 回复
                     </div>
                 </div>
             </div>
-            <c:forEach items="${c.replies}" var="r" varStatus="rsta">
-                <div class="reply">
-                    <div class="replyuser">${r.user.username}回复${r.user1.username}:</div>
-                    <div class="replycontent">${r.replaycontent}</div>
-                </div>
-            </c:forEach>
-            <div class="line" style="border-bottom:1px solid #CCC"></div>
+        </div>
+        <c:forEach items="${c.replies}" var="r" varStatus="rsta">
+            <div class="reply">
+                <div class="replyuser">${r.user.username}回复${r.user1.username}:</div>
+                <div class="replycontent">${r.replaycontent}</div>
+            </div>
+            <div class="replyArea reply_other" onclick="reply(${c.id} ,'${r.user.username}')"><img
+                    src="../img/reply.png"
+                    class="img-circle">
+                回复
+            </div>
         </c:forEach>
-    </div>
+
+        <div class="reply_area_other" id="${c.id}" style="display: none">
+            <div class="col-sm-10">
+                <textarea class="form-control" rows="2" id="${c.id}ReplyOtherContent"></textarea>
+            </div>
+            <div class="replySendOther">
+                <div class="cancel">取消</div>
+                <div class="send">发送</div>
+            </div>
+        </div>
+        <div class="line" style="border-bottom:1px solid #CCC"></div>
+    </c:forEach>
 </div>
+</div>
+<script>
+    $(function () {
+        $('#replyContent').focus(function () {
+            $(".replySend").show();
+        }).blur(function () {
+            $(".replySend").hide();
+        });
+    })
+
+    $(".send").click(function () {
+        alert("send");
+    })
+
+    $(".cancel").click(function () {
+        alert("cancel");
+    })
+
+    function reply(id, username) {
+        if ($('#' + id).is(":hidden")) {
+            $('#' + id).show();
+            $('#' + id + 'ReplyOtherContent').attr('placeholder', "回复" + username);
+        } else {
+            $('#' + id).hide();
+            $('#' + id + 'ReplyOtherContent').attr('placeholder', "");
+        }
+
+    }
+
+    function toDetail(id, userid) {
+        location.href = "noteDetail?id=" + id + "&userid=" + userid;
+    }
+</script>
 </body>
 </html>

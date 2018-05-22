@@ -100,6 +100,63 @@
     align-items: center;
 }
 
-.noteContent{
+.noteContent {
     font-size: 20px;
+}
+
+.currentUser {
+    width: 30px;
+    float: left;
+}
+
+.reply_other {
+    margin-left: 60px;
+}
+
+.replyArea:hover {
+    cursor: pointer;
+    color: #CCCCCC;
+}
+
+.send {
+    margin-left: 10px;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+    width: 100px;
+    height: 50px;
+    background-color: #4cae4c;
+    border-radius: 30px;
+}
+
+.cancel:hover {
+    color: #CCCCCC;
+}
+
+.send:hover {
+    background-color: #68ae65;
+    margin-left: 10px;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+    width: 100px;
+    height: 50px;
+    border-radius: 30px;
+}
+
+.replySend {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.replySendOther {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.reply_area_other {
+    margin-bottom: 10px;
+    margin-left: 20px;
 }
