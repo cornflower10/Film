@@ -41,11 +41,11 @@
             </div>
             <!-- 轮播（Carousel）导航 -->
             <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                <img src="../img/left.png" alt="" class="tip">
+                <img src="../img/left.png" alt="" class="tipfangxiang">
                 <span class="sr-only">Previous</span>
             </a>
             <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                <img src="../img/next.png" alt="" class="tip">
+                <img src="../img/next.png" alt="" class="tipfangxiang">
                 <span class="sr-only">Next</span>
             </a>
         </div>
@@ -77,13 +77,13 @@
     </div>
     <div><h3 style="font-weight: bold">笔记评论</h3></div>
     <div class="reply_area">
-        <img src=../img/left.png class="currentUser img-circle">
+        <img src="${user.img}" class="currentUser img-circle">
         <div class="col-sm-10">
             <textarea class="form-control" rows="4" id="replyContent" placeholder="写下你的评论"></textarea>
         </div>
         <div class="replySend">
             <div class="cancel">取消</div>
-            <div class="send">发送</div>
+            <div class="send" onclick="sendComment('${note.id}')">发送</div>
         </div>
     </div>
 </div>
@@ -99,8 +99,9 @@
                     <div class="createtime"><fmt:formatDate value="${c.createtime}"
                                                             pattern="yyyy/MM/dd HH:mm:SS"/></div>
                     <div class="content">${c.content}</div>
-                    <div class="replyArea" onclick="reply(${c.id},'${c.user.username}')"><img src="../img/reply.png"
-                                                                                              class="img-circle"> 回复
+                    <div class="replyArea" onclick="reply(${c.id},'${c.user.username}', '${c.user.id}')"><img
+                            src="../img/reply.png"
+                            class="img-circle"> 回复
                     </div>
                 </div>
             </div>
@@ -110,7 +111,7 @@
                 <div class="replyuser">${r.user.username}回复${r.user1.username}:</div>
                 <div class="replycontent">${r.replaycontent}</div>
             </div>
-            <div class="replyArea reply_other" onclick="reply(${c.id} ,'${r.user.username}')"><img
+            <div class="replyArea reply_other" onclick="reply(${c.id} ,'${r.user.username}', '${r.user.id}')"><img
                     src="../img/reply.png"
                     class="img-circle">
                 回复
@@ -120,10 +121,11 @@
         <div class="reply_area_other" id="${c.id}" style="display: none">
             <div class="col-sm-10">
                 <textarea class="form-control" rows="2" id="${c.id}ReplyOtherContent"></textarea>
+                <input type="text" style="visibility: hidden" id="${c.id}Hid">
             </div>
             <div class="replySendOther">
                 <div class="cancel">取消</div>
-                <div class="send">发送</div>
+                <div class="send" onclick="sendReply('${c.id}')">发送</div>
             </div>
         </div>
         <div class="line" style="border-bottom:1px solid #CCC"></div>
@@ -133,24 +135,76 @@
 <script>
     $(function () {
         $('#replyContent').focus(function () {
-            $(".replySend").show();
-        }).blur(function () {
             $(".replySend").hide();
+        }).blur(function () {
+            $(".replySend").show();
         });
     })
 
-    $(".send").click(function () {
-        alert("send");
-    })
+    function sendComment(noteid) {
+        var content = $("#replyContent").val();
 
-    $(".cancel").click(function () {
-        alert("cancel");
-    })
+        if (content.length < 1) {
+            alert("请输入回复内容");
+        } else {
+            $.ajax({
+                url: "/comment/addComment",
+                data: {
+                    noteId: noteid,
+                    content: content,
+                },
+                type: "POST",
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    if (data.success) {
+                        window.location.reload();
+                    } else {
 
-    function reply(id, username) {
+                    }
+                },
+                error: function (data) {
+
+                }
+            })
+        }
+    }
+
+    function sendReply(commentId) {
+        var toUserId = $('#' + commentId + 'Hid').val();
+        var content = $('#' + commentId + 'ReplyOtherContent').val();
+
+        if (content.length < 1) {
+            alert("请输入回复内容");
+        } else {
+            $.ajax({
+                url: "/reply/addReply",
+                data: {
+                    commentId: commentId,
+                    toUserId: toUserId,
+                    content: content
+                },
+                type: "POST",
+                dataType: "json",
+                success: function (data) {
+                    if (data.success) {
+                        window.location.reload();
+                    } else {
+
+                    }
+                },
+                error: function (data) {
+
+                }
+            })
+        }
+    }
+
+    function reply(id, username, toUserId) {
         if ($('#' + id).is(":hidden")) {
             $('#' + id).show();
             $('#' + id + 'ReplyOtherContent').attr('placeholder', "回复" + username);
+            $('#' + id + 'Hid').val(toUserId);
         } else {
             $('#' + id).hide();
             $('#' + id + 'ReplyOtherContent').attr('placeholder', "");

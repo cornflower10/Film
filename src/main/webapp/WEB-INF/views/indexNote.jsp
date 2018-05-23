@@ -63,8 +63,8 @@
                             <span><img :src="n.user.img" class="head img-circle"></span>
                             <span>{{n.user.username}}</span>
                         </div>
-                        <div class="favor">
-                            <span> <img src="../img/favor.png" alt="..." class="favor_icon"></span>
+                        <div class="favor" @click.stop="like(n.id)">
+                            <span> <img src="../../img/favor.png" alt="..." class="favor_icon"></span>
                             <span>{{n.favor.likecount}}</span>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                                 <span><img v-bind:src="n.user.img" class="head img-circle"></span>
                                 <span>{{n.user.username}}</span>
                             </div>
-                            <div class="favor" @click="like(n.id)">
+                            <div class="favor" @click.stop="like(n.id)">
                                 <span> <img src="../img/favor.png" alt="..." class="favor_icon"></span>
                                 <span>{{n.favor.likecount}}</span>
                             </div>
@@ -119,7 +119,43 @@
                     location.href = "noteDetail?id=" + id + "&userid=" + userid;
                 },
                 like: function (id) {
-                    alert("点赞" + id);
+                    $.ajax({
+                        url: "/note/getFavorId",
+                        data: {
+                            noteId: id,
+                        },
+                        type: "POST",
+                        dataType: "json",
+                        success: function (data) {
+                            console.log(data);
+                            if (data.success) {
+                                $.ajax({
+                                    url: "/favor/update",
+                                    data: {
+                                        favorId: data.data,
+                                    },
+                                    type: "POST",
+                                    dataType: "json",
+                                    success: function (data) {
+                                        console.log(data);
+                                        if (data.success) {
+                                            window.location.reload();
+                                        } else {
+
+                                        }
+                                    },
+                                    error: function (data) {
+
+                                    }
+                                })
+                            } else {
+
+                            }
+                        },
+                        error: function (data) {
+
+                        }
+                    })
                 }
             }
         })

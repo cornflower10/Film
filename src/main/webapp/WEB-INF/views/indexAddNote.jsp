@@ -82,7 +82,11 @@
             }
             ,
         }).on("fileuploaded", function (e, data) {
-            /* alert("发布成功")*/
+            if (data.response.success) {
+                window.location = "/note/indexNote";
+            } else {
+
+            }
         });
     })
 

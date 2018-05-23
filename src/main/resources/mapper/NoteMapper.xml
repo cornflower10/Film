@@ -40,7 +40,7 @@
         </collection>
     </resultMap>
     <select id="getNotes" parameterType="java.lang.Integer" resultMap="noteDetail">
-     SELECT n.id, n.content, n.createtiem, f.likecount, f.unlikecount, c.name,u.username, u.img, i.url, u.id
+     SELECT n.id, n.content, n.createtiem, f.likecount, f.unlikecount, c.name, u.username, u.img, i.url, u.id
      FROM note
      AS n
      LEFT JOIN favor AS f ON n.favorid = f.id

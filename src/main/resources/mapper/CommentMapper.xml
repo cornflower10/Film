@@ -18,6 +18,7 @@
         <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime"/>
 
         <association property="user" javaType="com.jiangpw.entity.User">
+            <id column="id" jdbcType="INTEGER" property="id"/>
             <result column="username" jdbcType="VARCHAR" property="username"/>
             <result column="img" jdbcType="VARCHAR" property="img"/>
         </association>
