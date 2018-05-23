@@ -34,7 +34,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="password" placeholder="密码">
+                <input type="password" class="form-control" id="password" placeholder="密码">
             </div>
         </div>
         <div class="form-group">
@@ -108,7 +108,12 @@
                 dataType:"json",
                 success:function (data) {
                     if(data.success){
-                        window.location = "/note/indexNote";
+                        if(data.code=="99"){
+                            window.location = "/user/check";
+                        }else {
+                            window.location = "/note/indexNote";
+                        }
+
                     }else {
                         $("#login-tip").html(data.msg);
                     }

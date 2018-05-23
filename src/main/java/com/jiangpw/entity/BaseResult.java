@@ -1,6 +1,7 @@
 package com.jiangpw.entity;
 
 public class BaseResult<T> {
+
     private boolean success;
     private String code;
     private String msg;
@@ -9,6 +10,12 @@ public class BaseResult<T> {
     public BaseResult(boolean success, String msg) {
         this.success = success;
         this.msg = msg;
+    }
+
+    public BaseResult(String code,boolean success, String msg) {
+        this.success = success;
+        this.msg = msg;
+        this.code = code;
     }
 
     public BaseResult() {

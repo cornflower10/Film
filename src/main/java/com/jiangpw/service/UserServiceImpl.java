@@ -59,8 +59,13 @@ public class UserServiceImpl implements UserService {
                 }
         }
 
+      boolean vip = userVIPMapper.selectByUserId(user.getId()).getVip();
+        if(!vip){
+            return new BaseResult<String>(Constants.ERROR_NO_CHECK,false, "等待审核！");
+        }else {
             SessionUtil.setSessionAttribute(request, Constants.SESSION_KEY, user);
             SessionUtil.removeSessionAttribute(request, Constants.SESSION_KEY_VAL);
+        }
             return new BaseResult<String>(true, "登陆成功");
         }
 
@@ -130,7 +135,10 @@ public class UserServiceImpl implements UserService {
                 return new BaseResult<String>(true, "注册失败");
             }
 
-            return new BaseResult<String>(true, "注册成功");
+            SessionUtil.removeSessionAttribute(request,Constants.SESSION_KEY_VAL);
+            SessionUtil.removeSessionAttribute(request,Constants.SESSION_KEY_VAL);
+
+            return new BaseResult<String>(Constants.ERROR_NO_CHECK,true, "注册成功");
         }
 
         return new BaseResult<String>(false, "注册失败");

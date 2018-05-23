@@ -12,4 +12,6 @@ public interface UserVIPMapper {
     List<UserVIP> selectByExampleWithBLOBs(UserVIPExample example);
 
     List<UserVIP> selectByExample(UserVIPExample example);
+
+    UserVIP selectByUserId(int userID);
 }
