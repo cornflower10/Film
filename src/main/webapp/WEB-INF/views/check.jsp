@@ -9,9 +9,9 @@
 <html>
 <head>
     <title>注册</title>
-    <script src="../js/jQuery-2.1.4.min.js"></script>
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../../js/jQuery-2.1.4.min.js"></script>
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../js/bootstrap.min.js"></script>
 </head>
 <body>
 <div><h1>审核中......</h1></div>

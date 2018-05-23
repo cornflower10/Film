@@ -85,7 +85,7 @@
                                 <span>{{n.user.username}}</span>
                             </div>
                             <div class="favor" @click.stop="like(n.id)">
-                                <span> <img src="../img/favor.png" alt="..." class="favor_icon"></span>
+                                <span> <img src="../../img/favor.png" alt="..." class="favor_icon"></span>
                                 <span>{{n.favor.likecount}}</span>
                             </div>
                         </div>

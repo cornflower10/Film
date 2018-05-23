@@ -11,10 +11,10 @@
 <html>
 <head>
     <title>笔记详情</title>
-    <script src="../js/jQuery-2.1.4.min.js"></script>
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <script src="../js/bootstrap.min.js"></script>
-    <link href="../css/noteDetail.css" rel="stylesheet">
+    <script src="../../js/jQuery-2.1.4.min.js"></script>
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../js/bootstrap.min.js"></script>
+    <link href="../../css/noteDetail.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
@@ -41,11 +41,11 @@
             </div>
             <!-- 轮播（Carousel）导航 -->
             <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                <img src="../img/left.png" alt="" class="tipfangxiang">
+                <img src="../../img/left.png" alt="" class="tipfangxiang">
                 <span class="sr-only">Previous</span>
             </a>
             <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                <img src="../img/next.png" alt="" class="tipfangxiang">
+                <img src="../../img/next.png" alt="" class="tipfangxiang">
                 <span class="sr-only">Next</span>
             </a>
         </div>
@@ -100,7 +100,7 @@
                                                             pattern="yyyy/MM/dd HH:mm:SS"/></div>
                     <div class="content">${c.content}</div>
                     <div class="replyArea" onclick="reply(${c.id},'${c.user.username}', '${c.user.id}')"><img
-                            src="../img/reply.png"
+                            src="../../img/reply.png"
                             class="img-circle"> 回复
                     </div>
                 </div>
@@ -112,7 +112,7 @@
                 <div class="replycontent">${r.replaycontent}</div>
             </div>
             <div class="replyArea reply_other" onclick="reply(${c.id} ,'${r.user.username}', '${r.user.id}')"><img
-                    src="../img/reply.png"
+                    src="../../img/reply.png"
                     class="img-circle">
                 回复
             </div>
