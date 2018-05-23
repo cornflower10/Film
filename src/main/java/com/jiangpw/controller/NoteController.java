@@ -2,6 +2,8 @@ package com.jiangpw.controller;
 
 import com.jiangpw.entity.*;
 import com.jiangpw.service.NoteService;
+import com.jiangpw.utils.Constants;
+import com.jiangpw.utils.SessionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -94,8 +96,8 @@ public class NoteController {
         String content = request.getParameter("content");
 
         Favor favor = new Favor();
-        favor.setLikecount(1000);
-        favor.setUnlikecount(8);
+        favor.setLikecount(0);
+        favor.setUnlikecount(0);
         noteService.addFavor(favor);
 
         Review review = new Review();
@@ -106,7 +108,8 @@ public class NoteController {
 
         note.setCategoryid(Integer.valueOf(categoryId));
         note.setContent(content);
-        note.setUserid(1);
+        User user = (User) SessionUtil.getSessionAttribute(request, Constants.SESSION_KEY);
+        note.setUserid(user.getId());
         note.setFavorid(noteService.selectLastFavor().getId());
         note.setReviewid(noteService.selectLastReview().getId());
 
@@ -150,6 +153,7 @@ public class NoteController {
         baseResult.setCode("0");
         baseResult.setMsg("OK");
         baseResult.setData("");
+        baseResult.setSuccess(true);
 
         return baseResult;
     }
@@ -162,5 +166,21 @@ public class NoteController {
     @RequestMapping("detailNote")
     public String detailNote(HttpServletRequest request, HttpServletResponse response) {
         return null;
+    }
+
+    @RequestMapping("/getFavorId")
+    @ResponseBody
+    public BaseResult<String> getFavorId(HttpServletRequest request, HttpServletResponse response) {
+        int noteId = Integer.parseInt(request.getParameter("noteId"));
+
+        int favorId = noteService.selectNote(noteId).getFavorid();
+
+        BaseResult<String> baseResult = new BaseResult<String>();
+        baseResult.setCode("0");
+        baseResult.setMsg("OK");
+        baseResult.setData("" + favorId);
+        baseResult.setSuccess(true);
+
+        return baseResult;
     }
 }

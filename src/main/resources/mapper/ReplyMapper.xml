@@ -13,12 +13,12 @@
     <resultMap id="replyDetail" type="com.jiangpw.entity.Reply">
         <result column="replaycontent" jdbcType="VARCHAR" property="replaycontent"/>
         <association property="user" javaType="com.jiangpw.entity.User">
-            <id column="id" jdbcType="INTEGER" property="id"/>
+            <id column="userId" jdbcType="INTEGER" property="id"/>
             <result column="fromuser" jdbcType="VARCHAR" property="username"/>
             <result column="img" jdbcType="VARCHAR" property="img"/>
         </association>
         <association property="user1" javaType="com.jiangpw.entity.User">
-            <id column="id" jdbcType="INTEGER" property="id"/>
+            <id column="user1Id" jdbcType="INTEGER" property="id"/>
             <result column="touser" jdbcType="VARCHAR" property="username"/>
             <result column="img" jdbcType="VARCHAR" property="img"/>
         </association>
@@ -78,7 +78,7 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
     <select id="getReplyByCommentId" resultMap="replyDetail" parameterType="java.lang.Integer">
-        select r.replaycontent, user.username fromuser, user1.username touser
+        select r.replaycontent, user.username fromuser, user.id userId, user1.username touser, user1.id user1Id
         FROM reply r LEFT JOIN user user ON user.id = r.fromuserid
         LEFT JOIN user user1 ON user1.id = r.touserid
         WHERE r.commentid = #{commentid,jdbcType=INTEGER}

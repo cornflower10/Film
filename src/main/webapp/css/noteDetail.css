@@ -41,6 +41,10 @@
     color: #5e5e5e;
 }
 
+.tipfangxiang {
+    width: 50px;
+}
+
 .tip {
     position: relative;
     float: right;
@@ -159,4 +163,8 @@
 .reply_area_other {
     margin-bottom: 10px;
     margin-left: 20px;
+}
+
+#myCarousel {
+    min-height: 400px;
 }
