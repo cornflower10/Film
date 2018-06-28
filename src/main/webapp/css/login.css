@@ -1,6 +1,24 @@
-.center {
-    position: absolute; width: 500px; height: 500px; margin: auto; top: 0; left: 0; bottom: 0; right: 0; background-color: #ffffff; overflow-x: hidden; overflow-y: hidden;
+/*web background*/
+.container{
+    display:table;
+    height:100%;
 }
+
+.row{
+    display: table-cell;
+    vertical-align: middle;
+}
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    text-align:left;
+    margin-right:-4px;
+}
+
 /*input style*/
 .page-input {
     border: 1px solid #c0cad2;
