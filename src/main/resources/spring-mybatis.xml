@@ -45,6 +45,8 @@
         <property name="basePackage" value="com.jiangpw.mapper"/>
     </bean>
 
+
+
     <!-- 配置事务管理器 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <!-- 注入数据库连接池 -->
@@ -53,4 +55,37 @@
 
     <!-- 配置基于注解的声明式事务 -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
+
+
+    <!-- film数据库 -->
+    <bean id="film_dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driver_film}"/>
+        <property name="jdbcUrl" value="${jdbc.url_film}"/>
+        <property name="user" value="${jdbc.username_film}"/>
+        <property name="password" value="${jdbc.password_film}"/>
+        <property name="maxPoolSize" value="${c3p0.maxPoolSize_film}"/>
+        <property name="minPoolSize" value="${c3p0.minPoolSize_film}"/>
+        <property name="autoCommitOnClose" value="${c3p0.autoCommitOnClose_film}"/>
+        <property name="checkoutTimeout" value="${c3p0.checkoutTimeout_film}"/>
+        <property name="acquireRetryAttempts" value="${c3p0.acquireRetryAttempts_film}"/>
+    </bean>
+    <!-- 配置SqlSessionFactory对象 -->
+    <bean id="sqlSessionFactory_film" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 注入数据库连接池 -->
+        <property name="dataSource" ref="film_dataSource"/>
+        <!-- 扫描entity包 使用别名 -->
+        <property name="typeAliasesPackage" value="com.jiangpw.entity.film"/>
+        <!-- 扫描sql配置文件:mapper需要的xml文件 -->
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+    </bean>
+
+    <!-- 配置扫描Dao接口包，动态实现Dao接口，注入到spring容器中 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 注入sqlSessionFactory -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_film"/>
+        <!-- 给出需要扫描Dao接口包 -->
+        <property name="basePackage" value="com.jiangpw.mapper.film"/>
+    </bean>
+
+
 </beans>

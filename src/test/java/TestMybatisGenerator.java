@@ -18,7 +18,7 @@ public class TestMybatisGenerator {
         List<String> warnings = new ArrayList<String>();
         boolean overwrite = true;
         try {
-            File configFile = new File(MyBatisGenerator.class.getClassLoader().getResource("generatorConfig.xml").toURI());
+            File configFile = new File(MyBatisGenerator.class.getClassLoader().getResource("generatorConfig_film.xml").toURI());
             ConfigurationParser configurationParser = new ConfigurationParser(warnings);
             Configuration configuration = configurationParser.parseConfiguration(configFile);
             ShellCallback callback = new DefaultShellCallback(overwrite);
