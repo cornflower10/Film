@@ -18,6 +18,13 @@ public class BaseResult<T> {
         this.code = code;
     }
 
+    public BaseResult( T t) {
+        this.data = t;
+        this.success = true;
+        this.msg = msg;
+        this.code = "0000";
+    }
+
     public BaseResult() {
 //        super();
     }

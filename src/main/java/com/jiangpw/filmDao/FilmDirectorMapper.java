@@ -1,10 +1,11 @@
-package com.jiangpw.mapper.film;
+package com.jiangpw.filmDao;
 
 import com.jiangpw.entity.film.Director;
 import com.jiangpw.entity.film.DirectorExample;
+
 import java.util.List;
 
-public interface DirectorMapper {
+public interface FilmDirectorMapper {
     int deleteByPrimaryKey(String id);
 
     int insert(Director record);

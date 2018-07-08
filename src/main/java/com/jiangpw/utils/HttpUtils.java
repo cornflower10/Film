@@ -55,7 +55,7 @@ public class HttpUtils {
         parameters.put("keyboard", key);
         parameters.put("show", "title,smalltext");
         parameters.put("Submit", "搜索");
-        String result =HttpUtils.sendPost("http://so.dygang.net/e/search/index123.php", parameters);
+        String result =HttpUtils.sendPost("http://so.dygang.net/e/search/index123.php", parameters,false);
 //        System.out.println(result);
 //        Document doc = Jsoup.parse(result);//解析HTML字符串返回一个Document实现
         Document docb = Jsoup.parseBodyFragment(result);
@@ -250,7 +250,7 @@ public class HttpUtils {
      *            请求参数，Map类型。
      * @return 远程响应结果
      */
-    public static String sendPost(String url, Map<String, String> parameters) {
+    public static String sendPost(String url, Map<String, String> parameters,boolean isUTF_8) {
         String result = "";// 返回的结果
         BufferedReader in = null;// 读取响应输入流
         PrintWriter out = null;
@@ -269,7 +269,7 @@ public class HttpUtils {
                 for (String name : parameters.keySet()) {
                     sb.append(name).append("=").append(
                             java.net.URLEncoder.encode(parameters.get(name),
-                                    "gb2312")).append("&");
+                                    isUTF_8?"UTF-8":"gb2312")).append("&");
                 }
                 String temp_params = sb.toString();
                 params = temp_params.substring(0, temp_params.length() - 1);
@@ -295,7 +295,7 @@ public class HttpUtils {
             out.flush();
             // 定义BufferedReader输入流来读取URL的响应，设置编码方式
             in = new BufferedReader(new InputStreamReader(httpConn
-                    .getInputStream(), "gb2312"));
+                    .getInputStream(), isUTF_8?"UTF-8":"gb2312"));
             String line;
             // 读取返回的内容
             while ((line = in.readLine()) != null) {

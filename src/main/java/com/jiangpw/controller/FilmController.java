@@ -2,6 +2,7 @@ package com.jiangpw.controller;
 
 import com.jiangpw.entity.BaseResult;
 import com.jiangpw.entity.User;
+import com.jiangpw.entity.film.DBDataPram;
 import com.jiangpw.service.UserService;
 import com.jiangpw.service.film.FilmInfoService;
 import com.jiangpw.utils.HttpUtils;
@@ -97,8 +98,14 @@ public class FilmController {
     public BaseResult<String> getData(HttpServletRequest request, HttpServletResponse response) {
 //        Info info = new Info();
 //        info.setTitle("西部世界");
-//        filmInfoService.addInfo(info);
-        return new BaseResult<String>();
+        DBDataPram dbDataPram = new DBDataPram();
+        dbDataPram.setType("movie");
+        dbDataPram.setSort("time");
+        dbDataPram.setTag("热门");
+        dbDataPram.setPage_limit(20);
+        dbDataPram.setPage_start(0);
+
+        return filmInfoService.getDataFromDouBan(dbDataPram);
 
     }
 }

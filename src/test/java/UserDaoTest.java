@@ -1,6 +1,6 @@
 import com.jiangpw.entity.film.Info;
 import com.jiangpw.mapper.UserMapper;
-import com.jiangpw.mapper.film.InfoMapper;
+import com.jiangpw.filmDao.FilmInfoMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ public class UserDaoTest {
     private UserMapper userMapper;
 
     @Autowired
-    private InfoMapper infoMapper;
+    private FilmInfoMapper infoMapper;
     @Test
     public void testFindUserById() {
 //        int id = 1;

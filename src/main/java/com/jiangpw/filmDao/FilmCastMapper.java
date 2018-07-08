@@ -1,10 +1,10 @@
-package com.jiangpw.mapper.film;
+package com.jiangpw.filmDao;
 
 import com.jiangpw.entity.film.Cast;
 import com.jiangpw.entity.film.CastExample;
 import java.util.List;
 
-public interface CastMapper {
+public interface FilmCastMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(Cast record);

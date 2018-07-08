@@ -1,10 +1,10 @@
-package com.jiangpw.mapper.film;
+package com.jiangpw.filmDao;
 
 import com.jiangpw.entity.film.Info;
 import com.jiangpw.entity.film.InfoExample;
 import java.util.List;
 
-public interface InfoMapper {
+public interface FilmInfoMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(Info record);
