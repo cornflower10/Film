@@ -2,7 +2,7 @@ package com.jiangpw.controller;
 
 import com.jiangpw.entity.BaseResult;
 import com.jiangpw.entity.User;
-import com.jiangpw.entity.film.DBDataPram;
+import com.jiangpw.entity.film.Info;
 import com.jiangpw.service.UserService;
 import com.jiangpw.service.film.FilmInfoService;
 import com.jiangpw.utils.HttpUtils;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @Controller
 @RequestMapping("/film")
@@ -95,17 +96,20 @@ public class FilmController {
 
     @RequestMapping("/getData")
     @ResponseBody
-    public BaseResult<String> getData(HttpServletRequest request, HttpServletResponse response) {
+    public BaseResult<List<Info>> getData(HttpServletRequest request, HttpServletResponse response) {
 //        Info info = new Info();
 //        info.setTitle("西部世界");
-        DBDataPram dbDataPram = new DBDataPram();
-        dbDataPram.setType("movie");
-        dbDataPram.setSort("time");
-        dbDataPram.setTag("热门");
-        dbDataPram.setPage_limit(20);
-        dbDataPram.setPage_start(0);
-
-        return filmInfoService.getDataFromDouBan(dbDataPram);
+//        DBDataPram dbDataPram = new DBDataPram();
+//        dbDataPram.setType("movie");
+//        dbDataPram.setSort("time");
+//        dbDataPram.setTag("热门");
+//        dbDataPram.setPage_limit(20);
+//        for (int i = 0; i <300 ; i++) {
+//            dbDataPram.setPage_start(i);
+//            filmInfoService.getDataFromDouBan(dbDataPram);
+//        }
+      List<Info> list = filmInfoService.selectByRate("8");
+        return new BaseResult<List<Info>>(list);
 
     }
 }

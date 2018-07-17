@@ -4,6 +4,8 @@ import com.jiangpw.entity.BaseResult;
 import com.jiangpw.entity.film.DBDataPram;
 import com.jiangpw.entity.film.Info;
 
+import java.util.List;
+
 public interface FilmInfoService {
     Info findById(int id);
 
@@ -11,4 +13,5 @@ public interface FilmInfoService {
 
     BaseResult<String> getDataFromDouBan(DBDataPram dbDataPram);
 
+    List<Info> selectByRate(String rate);
 }

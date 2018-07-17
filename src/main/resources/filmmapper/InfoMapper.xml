@@ -64,6 +64,15 @@
     from info
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="selectByRate" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from info
+    where rate <![CDATA[  >=  ]]> #{rate} ORDER BY rate DESC
+  </select>
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from info
     where id = #{id,jdbcType=INTEGER}
@@ -76,6 +85,23 @@
       #{cover,jdbcType=VARCHAR}, #{douban_id,jdbcType=INTEGER}, #{cover_x,jdbcType=VARCHAR}, 
       #{cover_y,jdbcType=VARCHAR})
   </insert>
+
+     <insert id ="insertList" parameterType="java.util.List" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+            <!--<selectKey resultType ="java.lang.Integer" keyProperty= "id"-->
+                 <!--order= "AFTER">-->
+                <!--SELECT LAST_INSERT_ID()-->
+             <!--</selectKey >-->
+       insert into info (rate, title, url,
+       cover, douban_id, cover_x,
+       cover_y)
+             values
+            <foreach collection ="list" item="info" index= "index" separator =",">
+              (#{info.rate,jdbcType=VARCHAR}, #{info.title,jdbcType=VARCHAR}, #{info.url,jdbcType=VARCHAR},
+              #{info.cover,jdbcType=VARCHAR}, #{info.douban_id,jdbcType=INTEGER}, #{info.cover_x,jdbcType=VARCHAR},
+              #{info.cover_y,jdbcType=VARCHAR})
+              </foreach >
+        </insert >
+
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.jiangpw.entity.film.Info" useGeneratedKeys="true">
     insert into info
     <trim prefix="(" suffix=")" suffixOverrides=",">
